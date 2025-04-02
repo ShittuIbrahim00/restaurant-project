@@ -1,8 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	content: [
+	  "./index.html",
+	  "./src/**/*.{js,ts,jsx,tsx}"
+	],
 	theme: {
-		extend: {},
+	  extend: {
+		fontFamily: {
+		  sans: ["Open Sans", "sans-serif"],  // Default sans-serif font
+		  jakarta: ["Plus Jakarta Sans", "sans-serif"],
+		  merienda: ["Merienda", "cursive"],
+		},
+		colors: {
+			customColor: '#A6A182', // Your custom color
+			customGreen: '#10B981',
+		  },
+	  },
 	},
 	plugins: [],
-};
+  }
+  
