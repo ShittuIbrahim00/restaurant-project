@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+
+# Build directory (Vite and other build tools)
+dist/
+
+# Vite server logs
+.vite/
+
+# IDE and editor config files (VS Code example)
+.vscode/
+
+# OS files (macOS and Windows)
+.DS_Store
+Thumbs.db
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
