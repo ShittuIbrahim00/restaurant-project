@@ -100,9 +100,6 @@ const OurChef = () => {
             <div>
                 <ReserveTable />
             </div>
-            <div>
-                <Footer />
-            </div>
         </div>
     );
 };
