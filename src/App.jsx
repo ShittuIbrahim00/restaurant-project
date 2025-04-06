@@ -7,9 +7,7 @@ import ChefDetail from "./pages/ChefDetail";
 import Footer from "./footer/Footer";
 import { useState } from "react";
 import { useEffect } from "react";
-
-
-
+import BookTable from "./pages/BookTable";
 
 function App() {
   const [loading, setIsLoading] = useState(true);
@@ -18,32 +16,26 @@ function App() {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
-
   return (
-
-    <div>
-      {!loading && <Navbar />}
-
-      <div className="min-h-full">
-        <div className="">
-          <Navbar />
-        </div>
-        <CustomCursor />
-
-        {/* Defining Routes for different pages */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/chefs" element={<OurChef />} />
-          <Route path="/chefs/:id" element={<ChefDetail />} />
-          {/* You can add a default route for 404-like behavior */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <div className="">
-          <Footer />
-        </div>
+    <div className="min-h-full">
+      <div className="">
+        <Navbar />
       </div>
-
+      <CustomCursor />
+      {/* Defining Routes for different pages */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/chefs" element={<OurChef />} />
+        <Route path="/chefs/:id" element={<ChefDetail />} />
+        <Route path='/bookTable' element={<BookTable />} />
+        {/* You can add a default route for 404-like behavior */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+      <div className="">
+        <Footer />
+      </div>
     </div>
-  )
+  );
 }
+
 export default App;

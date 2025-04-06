@@ -6,7 +6,8 @@ import { FaFacebookF } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 const Footer = () => {
   return (
-    <div className='bg-customBlack pb-8'>
+    <div className='bg-customBlack  pb-12'>
+
       <div className='lg:pt-28  p-4'>
         <div className='flex flex-col items-start gap-6'>
           <div>
