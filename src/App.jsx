@@ -15,14 +15,14 @@ function App() {
       <CustomCursor />
       {/* Defining Routes for different pages */}
       <Routes>
-      <Route path="/chefs" element={<OurChef/>}/>
+        <Route path="/chefs" element={<OurChef />} />
         <Route path="/" element={<Home />} />
-        
+
         {/* You can add a default route for 404-like behavior */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
