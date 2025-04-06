@@ -54,7 +54,7 @@ const ChefDetail = () => {
               <button className='text-black hover:text-white bg-white hover:bg-black transition-all duration-300 ease-in-out font-bold rounded-full p-4 flex justify-center items-center gap-2'><PiPhoneThin className='font-bold text-xl' /> {chef?.phone}</button>
             </div>
           </div>
-        </div>
+        </div> 
         <div className='w-[65%]'>
           <div className='flex items-center gap-3'>
             <div className='h-[5px] w-[5px] bg-customColor rounded-full'></div>
