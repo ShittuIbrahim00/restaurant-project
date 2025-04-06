@@ -8,7 +8,7 @@ const BookTable = () => {
   return (
     <div className="bg-gray-950 pb-14">
       <div className="relative">
-        <div
+        <div 
           className="absolute top-0 left-0 w-full opacity-20 h-[60vh] lg:h-[90vh] bg-fixed bg-no-repeat bg-cover"
           style={{ backgroundImage: `url('https://html.awaikenthemes.com/spicyhunt/images/page-header-bg.jpg')` }}
         ></div>
