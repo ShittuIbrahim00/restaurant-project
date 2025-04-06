@@ -56,7 +56,7 @@ const BookTable = () => {
             </div>
           </div>
           <div className='lg:w-[50%] w-full pt-5'>
-            <ContactForm />
+            <ContactForm /> 
           </div>
         </div>
       </div>
