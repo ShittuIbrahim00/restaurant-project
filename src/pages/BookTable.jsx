@@ -25,10 +25,10 @@ const BookTable = () => {
           </div>
         </div>
       </div>
-      <div className='lg:pt-[600px]'>
-        <div className='flex justify-between w-[100%] px-4'>
-          <div className='w-[45%]'>
-            <div className='flex items-center gap-3'>
+      <div className='pt-[600px]'>
+        <div className='lg:flex justify-between w-[100%] px-4'>
+          <div className='lg:w-[45%] w-full'>
+            <div className='lg:flex items-center gap-3'>
               <div className='h-[5px] w-[5px] rounded-full bg-customColor'></div>
               <h1 className='uppercase text-sm font-bold text-customColor'>contact us</h1>
             </div>
@@ -48,14 +48,14 @@ const BookTable = () => {
                 <TfiWorld className='text-xl' />
               </div>
               <div className='rounded-full text-white font-bold h-[50px] w-[50px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
-                <FaFacebookF className='text-xk' />
+                <FaFacebookF className='text-xl' />
               </div>
               <div className='rounded-full text-white font-bold h-[50px] w-[50px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
                 <FaInstagram className='text-xl' />
               </div>
             </div>
           </div>
-          <div className='w-[50%]'>
+          <div className='lg:w-[50%] w-full'>
             <ContactForm/>
           </div>
         </div>
