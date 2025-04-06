@@ -48,7 +48,7 @@ const BookTable = () => {
                 <TfiWorld className='text-xl' />
               </div>
               <div className='rounded-full text-white font-bold h-[50px] w-[50px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
-                <FaFacebookF className='text-xk' />
+                <FaFacebookF className='text-xl' />
               </div>
               <div className='rounded-full text-white font-bold h-[50px] w-[50px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
                 <FaInstagram className='text-xl' />
