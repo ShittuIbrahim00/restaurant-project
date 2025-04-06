@@ -124,7 +124,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="lg:hidden flex flex-col items-center bg-customColor py-4 z-10 text-white">
-          {["Home", "About Us", "Services", "Menu", "Pages", "Contact Us"].map(
+          {["Home", "About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
             (item, index) => (
               <div key={index} className="w-full">
                 <p
@@ -134,6 +134,9 @@ const Navbar = () => {
                       setIsMobileHomeDropdownOpen(!isMobileHomeDropdownOpen);
                     if (item === "Pages")
                       setIsMobilePagesDropdownOpen(!isMobilePagesDropdownOpen);
+                    if (item === "Cart") {
+                      navigate("/cart");
+                    };
                   }}
                 >
                   {item}
