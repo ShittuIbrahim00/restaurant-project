@@ -8,7 +8,7 @@ const BookTable = () => {
   return (
     <div className="bg-gray-950 pb-14">
       <div className="relative">
-        <div 
+        <div
           className="absolute top-0 left-0 w-full opacity-20 h-[60vh] lg:h-[90vh] bg-fixed bg-no-repeat bg-cover"
           style={{ backgroundImage: `url('https://html.awaikenthemes.com/spicyhunt/images/page-header-bg.jpg')` }}
         ></div>
@@ -25,9 +25,9 @@ const BookTable = () => {
           </div>
         </div>
       </div>
-      <div className='lg:pt-[600px]'>
-        <div className='flex justify-between w-[100%] px-4'>
-          <div className='w-[45%]'>
+      <div className='pt-[600px]'>
+        <div className='lg:flex justify-between w-[100%] px-4'>
+          <div className='lg:w-[45%] w-full'>
             <div className='flex items-center gap-3'>
               <div className='h-[5px] w-[5px] rounded-full bg-customColor'></div>
               <h1 className='uppercase text-sm font-bold text-customColor'>contact us</h1>
@@ -55,13 +55,13 @@ const BookTable = () => {
               </div>
             </div>
           </div>
-          <div className='w-[50%]'>
-            <ContactForm/>
+          <div className='lg:w-[50%] w-full pt-5'>
+            <ContactForm />
           </div>
         </div>
       </div>
       <div>
-        <ReserveTable/>
+        <ReserveTable />
       </div>
     </div>
   )
