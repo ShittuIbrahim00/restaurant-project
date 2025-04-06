@@ -26,8 +26,8 @@ const BookTable = () => {
         </div>
       </div>
       <div className='pt-[600px]'>
-        <div className='lg:flex justify-between w-[100%] px-4'>
-          <div className='lg:w-[45%] w-full'>
+        <div className='lg:flex justify-between w-[100%]'>
+          <div className='lg:w-[45%] w-full px-4'>
             <div className='lg:flex items-center gap-3'>
               <div className='h-[5px] w-[5px] rounded-full bg-customColor'></div>
               <h1 className='uppercase text-sm font-bold text-customColor'>contact us</h1>
@@ -55,7 +55,7 @@ const BookTable = () => {
               </div>
             </div>
           </div>
-          <div className='lg:w-[50%] w-full'>
+          <div className='lg:w-[50%] w-full px-4'>
             <ContactForm/>
           </div>
         </div>
