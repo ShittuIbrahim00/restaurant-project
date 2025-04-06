@@ -3,27 +3,27 @@ import logo from "../assets/logo.svg";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { FiMenu, FiX } from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHomeDropdownOpen, setIsHomeDropdownOpen] = useState(false);
   const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false);
-  const [isMobileHomeDropdownOpen, setIsMobileHomeDropdownOpen] =
-    useState(false);
-  const [isMobilePagesDropdownOpen, setIsMobilePagesDropdownOpen] =
-    useState(false);
+  const [isMobileHomeDropdownOpen, setIsMobileHomeDropdownOpen] = useState(false);
+  const [isMobilePagesDropdownOpen, setIsMobilePagesDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="top-0 absolute w-full z-10 border-b">
       <nav className="flex justify-between items-center px-6 lg:w-[87%] lg:mx-auto py-6 font-merienda">
         {/* Logo */}
-        <div className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img src={logo} alt="Logo" className="sm:w-full w-32 font-merienda" />
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center text-md text-white gap-10 font-merienda">
-          {["Home", "About Us", "Services", "Menu", "Pages", "Contact Us"].map(
+          {["Home", "About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
             (item, index) => (
               <div key={index} className="relative">
                 <p
@@ -33,6 +33,9 @@ const Navbar = () => {
                       setIsHomeDropdownOpen(!isHomeDropdownOpen);
                     if (item === "Pages")
                       setIsPagesDropdownOpen(!isPagesDropdownOpen);
+                    if (item === "Cart") {
+                      navigate("/cart");
+                    }
                   }}
                 >
                   {item}
@@ -135,9 +138,8 @@ const Navbar = () => {
                 >
                   {item}
                   {(item === "Home" || item === "Pages") && (
-                    isMobileHomeDropdownOpen && item === "Home" ? (
-                      <MdOutlineKeyboardArrowUp className="text-2xl transition-transform duration-300" />
-                    ) : isMobilePagesDropdownOpen && item === "Pages" ? (
+                    (item === "Home" && isMobileHomeDropdownOpen) || 
+                    (item === "Pages" && isMobilePagesDropdownOpen) ? (
                       <MdOutlineKeyboardArrowUp className="text-2xl transition-transform duration-300" />
                     ) : (
                       <MdOutlineKeyboardArrowDown className="text-2xl transition-transform duration-300" />
@@ -145,31 +147,19 @@ const Navbar = () => {
                   )}
                 </p>
 
-                {/* Dropdowns */}
-                {item === "Home" && (
-                  <div
-                    className={`text-white px-6 ml-4 text-sm font-merienda transition-all duration-300 ${
-                      isMobileHomeDropdownOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-                    }`}
-                  >
+                {/* Mobile Dropdowns */}
+                {item === "Home" && isMobileHomeDropdownOpen && (
+                  <div className="text-white px-6 ml-4 text-sm font-merienda transition-all duration-300 max-h-screen">
                     <p className="hover:text-black cursor-pointer">Submenu 1</p>
-                    <p className="hover:text-black cursor-pointer my-2">
-                      Submenu 2
-                    </p>
+                    <p className="hover:text-black cursor-pointer my-2">Submenu 2</p>
                     <p className="hover:text-black cursor-pointer">Submenu 3</p>
                   </div>
                 )}
 
-                {item === "Pages" && (
-                  <div
-                    className={`text-white px-6 ml-4 text-sm font-merienda transition-all duration-300 ${
-                      isMobilePagesDropdownOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-                    }`}
-                  >
+                {item === "Pages" && isMobilePagesDropdownOpen && (
+                  <div className="text-white px-6 ml-4 text-sm font-merienda transition-all duration-300 max-h-screen">
                     <p className="hover:text-black cursor-pointer">Page 1</p>
-                    <p className="hover:text-black cursor-pointer my-2">
-                      Page 2
-                    </p>
+                    <p className="hover:text-black cursor-pointer my-2">Page 2</p>
                     <p className="hover:text-black cursor-pointer">Page 3</p>
                   </div>
                 )}

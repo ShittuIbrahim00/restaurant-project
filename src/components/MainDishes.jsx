@@ -11,24 +11,28 @@ import dishImgFour from "../assets/our-dish-image-4.jpg";
 const MainDishes = () => {
   const data = [
     {
+      id:1,
       img: dishImgOne,
       title: "soups",
       descp:
         "Warm, comforting, and full of flavor, our soups avre the perfect start to any meal.",
     },
     {
+      id:2,
       img: dishImgTwo,
       title: "salads",
       descp:
         "Refreshing, vibrant, and full of fresh flavors, our salads are crafted to senses.",
     },
     {
+      id:3,
       img: dishImgThree,
       title: "main dishes",
       descp:
         "Offering bold flavors and expertly crafted recipes that cater to every taste.",
     },
     {
+      id:4,
       img: "https://html.awaikenthemes.com/spicyhunt/images/our-dish-image-4.jpg",
       title: "appetizers",
       descp:
@@ -52,7 +56,7 @@ const MainDishes = () => {
         </div>
         <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 w-[84%] text-white mx-auto py-10">
           {data?.map((mainDish) => (
-            <div className="py-4 flex flex-col items-center gap-6">
+            <div key={mainDish.id} className="py-4 flex flex-col items-center gap-6">
               <div className="w-28 sm:w-32 md:w-44 rounded-full">
                 <div className="relative overflow-hidden rounded-full group">
                   <img

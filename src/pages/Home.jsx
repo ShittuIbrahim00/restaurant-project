@@ -7,6 +7,7 @@ import Menu from "../components/Menu";
 import ResponsiveVideo from "../components/SpicyVideo";
 import Ingredients from "../components/Ingredients";
 import Testimonials from "../components/Testimonials";
+import LatestBlog from "../components/LatestBlog";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
        <ResponsiveVideo />
        <Ingredients />
        <Testimonials />
+       <LatestBlog />
     </div>
   );
 };

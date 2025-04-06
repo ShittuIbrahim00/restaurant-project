@@ -13,16 +13,19 @@ import aboutDetailsThree from "../assets/icon-about-detail-3.svg";
 const AboutUs = () => {
   const data = [
     {
+      id:1,
       img: aboutDetailsOne,
       title: "premium dining",
       descp: "It's very personal, and can only be a positive experience.",
     },
     {
+      id:2,
       img: aboutDetailsTwo,
       title: "abundant flavors",
       descp: "At secret recipe, we take immense pride in crafting.",
     },
     {
+      id:3,
       img: aboutDetailsThree,
       title: "indigenous meal",
       descp: "With local ingredients, unique spins on traditional flavors.",
@@ -137,7 +140,7 @@ const AboutUs = () => {
       <div className="py-10 text-white w-[90%] mx-auto">
         <div className="grid gap-4 lg:grid-cols-3 lg:gap-4 md:grid-cols-2 md:gap-4 sm:grid-cols-1 px-6">
           {data?.map((about) => (
-            <div className="flex justify-between items-center gap-6 my-2 lg:my-8">
+            <div key={about.id} className="flex justify-between items-center gap-6 my-2 lg:my-8">
               <div className="w-1/4 p-5 border rounded-full">
                 <img
                   src={about.img}

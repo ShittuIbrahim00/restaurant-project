@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import dishImgOne from "../assets/our-dish-image-1.jpg";
 import dishImgTwo from "../assets/our-dish-image-2.jpg";
-import dishImgThree from "../assets/our-dish-image-3.jpg";
 const categories = ["Appetizer", "Main Course", "Desserts", "Drinks"];
 
 const products = {
   Appetizer: [
     { id: 1, name: "Chips & Dipper", price: "$16.00", img: dishImgOne },
-    { id: 2, name: "Mozzarella Sticks", price: "$12.00", img: dishImgTwo },
-    { id: 2, name: "Mozzarella Sticks", price: "$12.00", img: dishImgTwo },
-    { id: 2, name: "Mozzarella Sticks", price: "$12.00", img: dishImgTwo },
-    { id: 2, name: "Mozzarella Sticks", price: "$12.00", img: dishImgTwo },
     { id: 2, name: "Mozzarella Sticks", price: "$12.00", img: dishImgTwo },
   ],
   "Main Course": [
