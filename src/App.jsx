@@ -5,9 +5,10 @@ import Home from "./pages/Home";
 import OurChef from "./pages/OurChef";
 import ChefDetail from "./pages/ChefDetail";
 import Footer from "./footer/Footer";
-import OurChef from "./pages/OurChef";
-import Footer from "./footer/Footer";
-import ChefDetail from "./pages/ChefDetail";
+import { useState } from "react";
+import { useEffect } from "react";
+
+
 
 
 function App() {
