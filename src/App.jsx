@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import OurChef from "./pages/OurChef";
 import Footer from "./footer/Footer";
 import ChefDetail from "./pages/ChefDetail";
+import BookTable from "./pages/BookTable";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/chefs" element={<OurChef />} />
         <Route path="/chefs/:id" element={<ChefDetail/>}/>
+        <Route path='/bookTable' element={<BookTable/>}/>
         {/* You can add a default route for 404-like behavior */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

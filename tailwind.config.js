@@ -14,6 +14,7 @@ export default {
 		colors: {
 			customColor: '#A6A182', // Your custom color
 			customGreen: '#10B981',
+			customBlack: '#212529',
 		  },
 	  },
 	},
