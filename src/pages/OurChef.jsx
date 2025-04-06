@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '../components/Navbar';
 import { TfiWorld } from "react-icons/tfi";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import ReserveTable from '../ReserveTable/ReserveTable';
-import Footer from '../footer/Footer'
+
 const OurChef = () => {
     const chefs = [
         { id: 1, img: 'https://html.awaikenthemes.com/spicyhunt/images/team-1.jpg', name: 'Sophia Martinez', position: 'Executive Chef' },
@@ -31,7 +30,6 @@ const OurChef = () => {
 
     return (
         <div className="bg-gray-950 pb-14">
-            <Navbar />
             <div className="relative">
                 <div
                     className="absolute top-0 left-0 w-full opacity-20 h-[60vh] lg:h-[90vh] bg-fixed bg-no-repeat bg-cover"
@@ -60,38 +58,40 @@ const OurChef = () => {
                                 onMouseLeave={() => handleMouseLeave(e.id)}
                                 className="relative"
                             >
-                                <div
-                                    style={{ backgroundImage: `url(${e.img})` }}
-                                    className="rounded-2xl object-cover bg-cover bg-center lg:w-[280px] h-[400px] mt-5"
-                                >
-                                    <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent"></div>
-                                    <div className="absolute bottom-0 left-0 w-full p-4 flex flex-col items-center text-white">
-                                        <h1 className="font-bold text-2xl font-merienda">{e.name}</h1>
-                                        <p className="text-gray-400 text-lg leading-7">{e.position}</p>
+                                <Link to={`${e.id}`}>
+                                    <div
+                                        style={{ backgroundImage: `url(${e.img})` }}
+                                        className="rounded-2xl object-cover bg-cover bg-center lg:w-[280px] h-[400px] mt-5"
+                                    >
+                                        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent"></div>
+                                        <div className="absolute bottom-0 left-0 w-full p-4 flex flex-col items-center text-white">
+                                            <h1 className="font-bold text-2xl font-merienda">{e.name}</h1>
+                                            <p className="text-gray-400 text-lg leading-7">{e.position}</p>
 
-                                        {/* Motion Div for Smooth Pop-up */}
-                                        {open[e.id] && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 30 }} // Start hidden and lower
-                                                animate={{ opacity: 1, y: 0 }} // Animate into view
-                                                exit={{ opacity: 0, y: 30 }} // Animate out when hiding
-                                                transition={{ duration: 0.4, ease: 'easeInOut' }} // Smooth slow effect
-                                                className="flex items-center mt-3 gap-6"
-                                            >
-                                                <div className='rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
-                                                    <TfiWorld />
-                                                </div>
-                                                <div className='rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
-                                                    <FaFacebookF />
-                                                </div>
-                                                <div className='rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
-                                                    <FaInstagram />
-                                                </div>
-                                            </motion.div>
-                                        )}
+                                            {/* Motion Div for Smooth Pop-up */}
+                                            {open[e.id] && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 30 }} // Start hidden and lower
+                                                    animate={{ opacity: 1, y: 0 }} // Animate into view
+                                                    exit={{ opacity: 0, y: 30 }} // Animate out when hiding
+                                                    transition={{ duration: 0.4, ease: 'easeInOut' }} // Smooth slow effect
+                                                    className="flex items-center mt-3 gap-6"
+                                                >
+                                                    <div className='rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
+                                                        <TfiWorld />
+                                                    </div>
+                                                    <div className='rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
+                                                        <FaFacebookF />
+                                                    </div>
+                                                    <div className='rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none'>
+                                                        <FaInstagram />
+                                                    </div>
+                                                </motion.div>
+                                            )}
 
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     ))}
