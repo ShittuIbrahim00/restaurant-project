@@ -4,7 +4,7 @@ import ReserveTableForm from './ReserveTableForm'
 const ReserveTable = () => {
   return (
     <div>
-      <div className='bg-black opacity-85 grid lg:grid-cols-2 p-3 lg:p-9 grid-cols-1 gap-8 '>
+      <div className='bg-customBlack mt-3 grid lg:grid-cols-2 p-3 lg:p-9 grid-cols-1 gap-8 '>
         <div className='flex flex-col gap-6 pt-16 items-start justify-start'>
           <div>
             <div className='flex items-center gap-3'>

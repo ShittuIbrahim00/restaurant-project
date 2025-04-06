@@ -14,7 +14,13 @@ export default {
 		colors: {
 			customColor: '#A6A182', // Your custom color
 			customGreen: '#10B981',
+
+			customBlack: '#0E110D',
+			customGray: '#1F2120',
+			customRoundedBg: '#363837',
+
 			customBlack: '#212529',
+
 		  },
 	  },
 	},
