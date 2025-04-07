@@ -13,6 +13,11 @@ import CheckoutForm from "./pages/CheckoutForm";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
+import OurChef from "./pages/OurChef";
+import Footer from "./footer/Footer";
+import ChefDetail from "./pages/ChefDetail";
+import BookTable from "./pages/BookTable";
+
 function App() {
   const [loading, setIsLoading] = useState(true);
 
@@ -40,9 +45,15 @@ function App() {
               </Elements>
             }
           />
+          <Route path="/chefs" element={<OurChef />} />
+          <Route path="/chefs/:id" element={<ChefDetail />} />
+          <Route path="/bookTable" element={<BookTable />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       )}
+      <div className="">
+        <Footer />
+      </div>
     </div>
   );
 }
