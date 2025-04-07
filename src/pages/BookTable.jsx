@@ -6,7 +6,7 @@ import ContactForm from '../ReserveTable/ContactForm'
 import ReserveTable from '../ReserveTable/ReserveTable'
 const BookTable = () => {
   return (
-    <div className="bg-gray-950 pb-14">
+    <div className="bg-gray-950 opacity-100  pb-14">
       <div className="relative">
         <div
           className="absolute top-0 left-0 w-full opacity-20 h-[60vh] lg:h-[90vh] bg-fixed bg-no-repeat bg-cover"
@@ -26,9 +26,9 @@ const BookTable = () => {
         </div>
       </div>
       <div className='pt-[600px]'>
-        <div className='lg:flex justify-between w-[100%] px-4'>
-          <div className='lg:w-[45%] w-full'>
-            <div className='flex items-center gap-3'>
+        <div className='lg:flex justify-between w-[100%]'>
+          <div className='lg:w-[45%] w-full px-4'>
+            <div className='lg:flex items-center gap-3'>
               <div className='h-[5px] w-[5px] rounded-full bg-customColor'></div>
               <h1 className='uppercase text-sm font-bold text-customColor'>contact us</h1>
             </div>
@@ -55,8 +55,8 @@ const BookTable = () => {
               </div>
             </div>
           </div>
-          <div className='lg:w-[50%] w-full pt-5'>
-            <ContactForm /> 
+          <div className='lg:w-[50%] w-full px-4'>
+            <ContactForm/>
           </div>
         </div>
       </div>

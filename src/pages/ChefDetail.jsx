@@ -18,7 +18,7 @@ const ChefDetail = () => {
   ];
   const chef = chefs.find((prev) => prev.id === chefId)
   return (
-    <div className='bg-gray-950 pb-14'>
+    <div className='bg-gray-950 opacity-100  pb-14'>
       <div className="relative">
         <div
           className="absolute top-0 left-0 w-full opacity-20 h-[60vh] lg:h-[90vh] bg-fixed bg-no-repeat bg-cover"

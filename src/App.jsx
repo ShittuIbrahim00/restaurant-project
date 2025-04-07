@@ -14,8 +14,10 @@ import CheckoutForm from "./pages/CheckoutForm";
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
 import OurChef from "./pages/OurChef";
-import Footer from "./footer/Footer";
 import ChefDetail from "./pages/ChefDetail";
+import Footer from "./footer/Footer";
+import { useState } from "react";
+import { useEffect } from "react";
 import BookTable from "./pages/BookTable";
 
 function App() {
@@ -25,7 +27,6 @@ function App() {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <div>
       {!loading && <Navbar />}
