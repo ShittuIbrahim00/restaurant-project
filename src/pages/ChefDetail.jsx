@@ -18,7 +18,7 @@ const ChefDetail = () => {
   ];
   const chef = chefs.find((prev) => prev.id === chefId)
   return (
-    <div className='bg-gray-950 opacity-100  pb-14'>
+    <div className='bg-black w-full opacity-95 pb-14'>
       <div className="relative">
         <div
           className="absolute top-0 left-0 w-full opacity-20 h-[60vh] lg:h-[90vh] bg-fixed bg-no-repeat bg-cover"
@@ -39,8 +39,8 @@ const ChefDetail = () => {
           </div>
         </div>
       </div>
-      <div className='lg:w-[98%] w-[90%] lg:pt-[600px] pt-[550px] mx-4 lg:flex items-start gap-9 '>
-        <div className='lg:w-[30%] w-full lg:sticky lg:top-0'>
+      <div className='lg:pt-[600px] pt-[550px] mx-4 lg:flex items-start gap-9 '>
+        <div className=' lg:sticky lg:top-0'>
           <div className='lg:w-full '>
             <img src={chef?.img} alt={chef?.name} className='w-full rounded-2xl h-[450px]' />
           </div>
@@ -54,8 +54,8 @@ const ChefDetail = () => {
               <button className='text-black hover:text-white bg-white hover:bg-black transition-all duration-300 ease-in-out font-bold rounded-full p-4 flex justify-center items-center gap-2'><PiPhoneThin className='font-bold text-xl' /> {chef?.phone}</button>
             </div>
           </div>
-        </div> 
-        <div className='w-[65%]'>
+        </div>
+        <div className='lg:w-[68%] w-[100%]'>
           <div className='flex items-center gap-3'>
             <div className='h-[5px] w-[5px] bg-customColor rounded-full'></div>
             <p className='text-sm leading-9 font-bold uppercase text-customColor'>{chef.speciality}</p>
@@ -63,43 +63,43 @@ const ChefDetail = () => {
           <div className='mt-3'>
             <h1 className='text-white leading-5 font-bold lg:text-[45px] md:text-[35px] text-[30px]'>ABOUT <span className='text-customColor'>ME</span></h1>
           </div>
-          <div className='w-[150%] lg:w-full mt-7 text-gray-300 opacity-90 text-lg leading-7'>
+          <div className='lg:w-full  mt-7 text-gray-300 opacity-90 text-lg leading-7'>
             <p>{chef?.descp}</p>
           </div>
           <div className='mt-12'>
-            <div className='w-full lg:w-[35%] flex items-center justify-between'>
+            <div className=' lg:w-[35%] flex items-center justify-between'>
               <p className='text-white font-bold text-xl'>Speciality:</p>
               <p className='text-white font-semibold'>{chef?.speciality}</p>
             </div>
-            <div className='w-full mt-2 lg:w-[35%] flex items-center justify-between'>
+            <div className=' mt-2 lg:w-[35%] flex items-center justify-between'>
               <p className='text-white font-bold text-xl'>Experience:</p>
               <p className='text-white font-semibold'>{chef?.experience}</p>
             </div>
-            <div className='w-full mt-2 lg:w-[35%] flex items-center justify-between'>
+            <div className=' mt-2 lg:w-[35%] flex items-center justify-between'>
               <p className='text-white font-bold text-xl'>Email:</p>
               <p className='text-white font-semibold text-right'>{chef?.email}</p>
             </div>
-            <div className='w-full mt-2 lg:w-[35%] flex items-center justify-between'>
+            <div className=' mt-2 lg:w-[35%] flex items-center justify-between'>
               <p className='text-white font-bold text-xl'>Phone:</p>
               <p className='text-white font-semibold'>{chef?.phone}</p>
             </div>
           </div>
 
           <div>
-            <hr className='bg-gray-100 opacity-15 mt-12 lg:w-full w-[150%]' />
+            <hr className='bg-gray-100 opacity-15 mt-12 lg:w-full' />
           </div>
           <div>
             <div className='mt-12'>
               <h1 className='text-white leading-5 font-bold lg:text-[40px] md:text-[35px] text-[30px]'>CONTACT <span className='text-customColor'>ME</span></h1>
             </div>
-            <div className='lg:w-full w-[150%] mt-7 text-gray-300 opacity-90 text-lg leading-7'>
-            <p>{chef?.descp}</p>
+            <div className='lg:w-full mt-7 text-gray-300 opacity-90 text-lg leading-7'>
+              <p>{chef?.descp}</p>
+            </div>
           </div>
-          </div>
-          <ContactChefForm className='w-full'/>
+          <ContactChefForm />
         </div>
       </div>
-    <ReserveTable/>
+
     </div>
   )
 }
