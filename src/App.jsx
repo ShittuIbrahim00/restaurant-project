@@ -17,7 +17,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="min-h-full">
+    <div className="">
       <div className="">
         <Navbar />
       </div>
