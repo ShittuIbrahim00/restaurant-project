@@ -25,10 +25,10 @@ const BookTable = () => {
           </div>
         </div>
       </div>
-      <div className='pt-[600px]'>
-        <div className='lg:flex justify-between w-[100%]'>
+      <div className='lg:pt-[650px] pt-[500px]'>
+        <div className='lg:flex justify-between items-center w-[100%]'>
           <div className='lg:w-[45%] w-full'>
-            <div className='lg:flex items-center gap-3 px-4'>
+            <div className='items-center gap-3 px-4'>
 
               <div className='flex items-center gap-3'>
                 <div className='h-[5px] w-[5px] rounded-full bg-customColor'></div>
@@ -57,11 +57,11 @@ const BookTable = () => {
                 </div>
               </div>
             </div>
-            <div className='lg:w-[50%] w-full pt-5 px-4'>
-              <ContactForm />
-            </div>
           </div>
-        
+          <div className='lg:w-[50%] w-full pt-5 px-4'>
+            <ContactForm />
+          </div>
+
         </div>
       </div>
     </div>
