@@ -17,6 +17,10 @@ import BookTable from "./pages/BookTable";
 
 // const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
+import About from "./pages/About";
+import Service from "./pages/Service";
+import ContactUs from "./pages/ContactUs";
+import MenuItemDetail from "./pages/MenuItemDetail";
 
 function App() {
   const [loading, setIsLoading] = useState(true);
@@ -26,7 +30,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="font-merienda">
+    <div className="font-merienda min-h-screen overflow-hidden">
       {!loading && <Navbar />}
 
       <div className="">
@@ -53,7 +57,12 @@ function App() {
             <Route path="/chefs" element={<OurChef />} />
             <Route path="/chefs/:id" element={<ChefDetail />} />
             <Route path="/reservation" element={<BookTable />} />
+            <Route path="/service" element={<Service/>}/>
+            <Route path="/about" element={<About/>}/>
+            <Route path="/contact" element={<ContactUs/>}/>
+            <Route path="/menudetail" element={<MenuItemDetail/>}/>
             <Route path="*" element={<Error404 />} />
+
           </Routes>
         )}
         <div className="">
@@ -62,6 +71,8 @@ function App() {
       </div>
     </div>
 
+    
+    
   );
 }
 
