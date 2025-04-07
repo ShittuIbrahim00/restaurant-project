@@ -16,8 +16,6 @@ const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 import OurChef from "./pages/OurChef";
 import ChefDetail from "./pages/ChefDetail";
 import Footer from "./footer/Footer";
-import { useState } from "react";
-import { useEffect } from "react";
 import BookTable from "./pages/BookTable";
 
 function App() {
@@ -28,7 +26,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div>
+    <div className="font-merienda">
       {!loading && <Navbar />}
       <CustomCursor />
 
