@@ -1,8 +1,10 @@
 import React from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import postImg from "../assets/post-1.jpg";
+import { useNavigate } from "react-router-dom";
 
 const LatestBlog = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-customBlack px-4 min-h-screen font-merienda pt-10 pb-16">
       <div className="grid gap-4 w-[90%] mx-auto">
@@ -36,7 +38,7 @@ const LatestBlog = () => {
                 5 Tips for perfecting your home dining experience
               </h1>
 
-              <button className="relative overflow-hidden text-white font-bold text-sm flex items-center transition-all duration-300 ease-in-out">
+              <button onClick={()=>navigate("/reservation")} className="relative overflow-hidden text-white font-bold text-sm flex items-center transition-all duration-300 ease-in-out">
                 <span className="relative z-10 transition-colors duration-300 hover:text-white text-customColor">
                   Book Table
                 </span>

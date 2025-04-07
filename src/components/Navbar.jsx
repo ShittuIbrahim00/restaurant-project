@@ -52,13 +52,13 @@ const Navbar = () => {
                     onMouseLeave={() => setIsHomeDropdownOpen(false)}
                   >
                     <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
-                      Page 2
+                      Slider
                     </p>
                     <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
-                      Page 2
+                      Images
                     </p>
                     <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
-                      Page 2
+                      Gallery
                     </p>
                   </div>
                 )}
@@ -72,9 +72,9 @@ const Navbar = () => {
                     <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
                       Services Details
                     </p>
-                    <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
+                    <Link to={'/chefs'} className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
                       Our Chefs
-                    </p>
+                    </Link>
                     <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
                       FAQs
                     </p>
@@ -89,7 +89,7 @@ const Navbar = () => {
         </div>
 
         {/* "Book a Table" Button - Only on Large Screens */}
-        <button className="hidden lg:flex relative overflow-hidden font-merienda text-white bg-customColor px-8 py-2 rounded-full font-bold text-sm gap-2 cursor-pointer capitalize items-center group transition-all duration-300 ease-in-out">
+        <button onClick={()=>navigate("/reservation")} className="hidden lg:flex relative overflow-hidden font-merienda text-white bg-customColor px-8 py-2 rounded-full font-bold text-sm gap-2 cursor-pointer capitalize items-center group transition-all duration-300 ease-in-out">
           <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
             Book a table
           </span>
@@ -153,17 +153,17 @@ const Navbar = () => {
                 {/* Mobile Dropdowns */}
                 {item === "Home" && isMobileHomeDropdownOpen && (
                   <div className="text-white px-6 ml-4 text-sm font-merienda transition-all duration-300 max-h-screen">
-                    <p className="hover:text-black cursor-pointer">Submenu 1</p>
-                    <p className="hover:text-black cursor-pointer my-2">Submenu 2</p>
-                    <p className="hover:text-black cursor-pointer">Submenu 3</p>
+                    <p className="hover:text-black cursor-pointer">Slider</p>
+                    <p className="hover:text-black cursor-pointer my-2">Gallery</p>
+                    <p className="hover:text-black cursor-pointer">Images</p>
                   </div>
                 )}
 
                 {item === "Pages" && isMobilePagesDropdownOpen && (
                   <div className="text-white px-6 ml-4 text-sm font-merienda transition-all duration-300 max-h-screen">
-                    <p className="hover:text-black cursor-pointer">Page 1</p>
-                    <p className="hover:text-black cursor-pointer my-2">Page 2</p>
-                    <p className="hover:text-black cursor-pointer">Page 3</p>
+                    <p className="hover:text-black cursor-pointer">Service Details</p>
+                    <Link to={'/chefs'} className="hover:text-black cursor-pointer my-2">Chefs</Link>
+                    <p className="hover:text-black cursor-pointer">FAQs</p>
                   </div>
                 )}
               </div>

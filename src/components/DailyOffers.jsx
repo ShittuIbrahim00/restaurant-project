@@ -6,8 +6,10 @@ import {
 import { GiCheckMark } from "react-icons/gi";
 import { TiStar } from "react-icons/ti";
 import aboutUsImg from "../assets/daily-offer-image.png";
+import { useNavigate } from "react-router-dom";
 
 const DailyOffers = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-customBlack p-4 min-h-screen font-merienda">
       {/* Content */}
@@ -116,7 +118,7 @@ const DailyOffers = () => {
 
             <div className="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
               {/* "Book a Table" Button */}
-              <button className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+              <button onClick={()=>navigate("/reservation")} className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                   Book Table
                 </span>

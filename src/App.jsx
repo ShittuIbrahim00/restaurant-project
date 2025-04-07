@@ -46,12 +46,12 @@ function App() {
           />
           <Route path="/chefs" element={<OurChef />} />
           <Route path="/chefs/:id" element={<ChefDetail />} />
-          <Route path="/bookTable" element={<BookTable />} />
+          <Route path="/reservation" element={<BookTable />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       )}
       <div className="">
-        <Footer />
+        {!loading && <Footer />}
       </div>
     </div>
   );

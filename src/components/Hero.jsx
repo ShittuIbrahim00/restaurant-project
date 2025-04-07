@@ -5,8 +5,10 @@ import heroCircleImg from "../assets/hero-circle-img-1.jpg";
 import heroCircleImgTwo from "../assets/hero-circle-img-2.jpg";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { BiLogoPlayStore } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate()
   return (
     <div className="relative font-merienda min-h-screen">
       {/* Hero Background */}
@@ -44,7 +46,7 @@ const Hero = () => {
               {/* Buttons */}
               <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 {/* "Book a Table" Button */}
-                <button className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+                <button onClick={()=>navigate("/reservation")} className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                     Book a table
                   </span>
