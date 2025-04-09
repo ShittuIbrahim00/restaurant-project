@@ -29,7 +29,7 @@ const OurChef = () => {
     };
 
     return (
-        <div className="bg-gray-950 opacity-100 pb-14">
+        <div className="bg-black opacity-95 pb-14">
             <div className="relative">
                 <div
                     className="absolute top-0 left-0 w-full opacity-20 h-[60vh] lg:h-[90vh] bg-fixed bg-no-repeat bg-cover"
@@ -50,22 +50,22 @@ const OurChef = () => {
             </div>
 
             <div className="lg:pt-[550px] md:pt-[450px] sm:pt-[350px] pt-[350px]">
-                <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-5 gap-5">
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 mt-3 gap-2">
                     {chefs.map((e) => (
-                        <div key={e.id} className="">
+                        <div key={e.id} className="mx-auto">
                             <div
                                 onMouseOver={() => handleMouseOver(e.id)}
                                 onMouseLeave={() => handleMouseLeave(e.id)}
                                 className="relative"
                             >
-                                <Link to={`${e.id}`}>
+                                <Link to={`${e.id}`} className='mx-auto'>
                                     <div
                                         style={{ backgroundImage: `url(${e.img})` }}
-                                        className="rounded-2xl object-cover bg-cover bg-center lg:w-[280px] h-[400px] mt-5"
+                                        className="rounded-2xl object-cover bg-cover bg-center lg:w-[280px] h-[400px] mt-16"
                                     >
                                         <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent"></div>
-                                        <div className="absolute bottom-0 left-0 w-full p-4 flex flex-col items-center text-white">
-                                            <h1 className="font-bold text-2xl font-merienda">{e.name}</h1>
+                                        <div className="absolute bottom-0 left-0  w-full p-4 flex flex-col items-center text-white">
+                                            <h1 className="font-bold text-2xl text-center font-merienda">{e.name}</h1>
                                             <p className="text-gray-400 text-lg leading-7">{e.position}</p>
 
                                             {/* Motion Div for Smooth Pop-up */}
@@ -96,9 +96,6 @@ const OurChef = () => {
                         </div>
                     ))}
                 </div>
-            </div>
-            <div>
-                <ReserveTable />
             </div>
         </div>
     );
