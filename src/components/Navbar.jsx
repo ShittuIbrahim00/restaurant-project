@@ -15,15 +15,15 @@ const Navbar = () => {
 
   return (
     <div className="top-0 absolute w-full z-10 border-b">
-      <nav className="flex justify-between items-center px-6 lg:w-[87%] lg:mx-auto py-6 font-merienda">
+      <nav className="flex justify-between items-center px-6 w-[87%] mx-auto py-6 font-merienda">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Logo" className="sm:w-full w-32 font-merienda" />
+          <img src={logo} alt="Logo" className="sm:w-full w-32 lg:w-36 xl:w-full font-merienda" />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center text-md text-white gap-10 font-merienda">
-          {["Home", "About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
+        <div className="hidden lg:flex items-center text-md text-white gap-10 lg:gap-6 lg:text-sm xl:gap-10 xl:text-lg font-merienda">
+          {["About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
             (item, index) => (
               <div key={index} className="relative">
                 <p
@@ -89,11 +89,11 @@ const Navbar = () => {
         </div>
 
         {/* "Book a Table" Button - Only on Large Screens */}
-        <button onClick={()=>navigate("/reservation")} className="hidden lg:flex relative overflow-hidden font-merienda text-white bg-customColor px-8 py-2 rounded-full font-bold text-sm gap-2 cursor-pointer capitalize items-center group transition-all duration-300 ease-in-out">
+        <button onClick={()=>navigate("/reservation")} className="hidden lg:flex relative overflow-hidden font-merienda text-white bg-customColor px-8 py-2 xl:px-8 xl:py-2 lg:py-1 lg:px-4 rounded-full font-bold lg:font-normal xl:font-bold text-sm gap-2 cursor-pointer capitalize items-center group transition-all duration-300 ease-in-out">
           <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
             Book a table
           </span>
-          <IoIosArrowRoundForward className="relative z-10 text-3xl transition-colors duration-300 group-hover:text-black" />
+          <IoIosArrowRoundForward className="relative z-10 text-3xl xl:text-3xl lg:text-2xl transition-colors duration-300 group-hover:text-black" />
 
           {/* Background effect */}
           <span className="absolute inset-0 bg-white w-0 left-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
