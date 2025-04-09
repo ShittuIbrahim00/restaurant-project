@@ -14,6 +14,7 @@ import BookTable from "./pages/BookTable";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./pages/CheckoutForm";
+import { Analytics } from "@vercel/analytics/react"
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
@@ -49,6 +50,7 @@ function App() {
         </Routes>
       )}
       {!loading && <Footer />}
+      <Analytics />
     </div>
   );
 }
