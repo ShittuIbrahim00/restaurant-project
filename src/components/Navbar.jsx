@@ -36,6 +36,15 @@ const Navbar = () => {
                     if (item === "Cart") {
                       navigate("/cart");
                     }
+                    if (item === "About Us") {
+                      navigate("/about");
+                    };
+                    if (item === "Services") {
+                      navigate("/service");
+                    };
+                    if (item === "Contact Us") {
+                      navigate("/contact");
+                    };
                   }}
                 >
                   {item}
@@ -78,9 +87,9 @@ const Navbar = () => {
                     <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
                       FAQs
                     </p>
-                    <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
+                    <Link to={'/*'} className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
                       404
-                    </p>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -137,6 +146,15 @@ const Navbar = () => {
                     if (item === "Cart") {
                       navigate("/cart");
                     };
+                    if (item === "About Us") {
+                      navigate("/about");
+                    };
+                    if (item === "Services") {
+                      navigate("/service");
+                    };
+                    if (item === "Contact Us") {
+                      navigate("/contact");
+                    };
                   }}
                 >
                   {item}
@@ -164,6 +182,7 @@ const Navbar = () => {
                     <p className="hover:text-black cursor-pointer">Service Details</p>
                     <Link to={'/chefs'} className="hover:text-black cursor-pointer my-2">Chefs</Link>
                     <p className="hover:text-black cursor-pointer">FAQs</p>
+                    <Link to={'/*'} className="hover:text-black cursor-pointer my-2">404</Link>
                   </div>
                 )}
               </div>
