@@ -84,6 +84,9 @@ const Navbar = () => {
                     <Link to={'/chefs'} className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
                       Our Chefs
                     </Link>
+                    <Link to={'/menudetail'} className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
+                      Menu Details
+                    </Link>
                     <p className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
                       FAQs
                     </p>
@@ -133,7 +136,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="lg:hidden flex flex-col items-center bg-customColor py-4 z-10 text-white">
-          {["Home", "About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
+          {["About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
             (item, index) => (
               <div key={index} className="w-full">
                 <p
@@ -180,6 +183,9 @@ const Navbar = () => {
                 {item === "Pages" && isMobilePagesDropdownOpen && (
                   <div className="text-white px-6 ml-4 text-sm font-merienda transition-all duration-300 max-h-screen">
                     <p className="hover:text-black cursor-pointer">Service Details</p>
+                    <Link to={'/menudetail'} className="hover:text-black cursor-pointer my-2 hover:translate-x-2 transition-all duration-200">
+                      Menu Details
+                    </Link>
                     <Link to={'/chefs'} className="hover:text-black cursor-pointer my-2">Chefs</Link>
                     <p className="hover:text-black cursor-pointer">FAQs</p>
                     <Link to={'/*'} className="hover:text-black cursor-pointer my-2">404</Link>
