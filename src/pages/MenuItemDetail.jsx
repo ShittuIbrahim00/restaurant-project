@@ -1,4 +1,5 @@
 import React from 'react'
+import {IoIosArrowRoundForward} from "react-icons/io";
 
 const MenuItemDetail = () => {
   return (
@@ -30,8 +31,12 @@ const MenuItemDetail = () => {
                     <h5 className='font-bold text-[#A6A182]'>CHEF</h5>
                     <h1 className='text-white font-bold text-4xl py-3'>ABOUT THE <span className='text-[#A6A182]'>DISH</span></h1>
                     <p className='text-[#AEB0B4] text-lg'>Sophia Martinez is a talented and passionate Chef de Cuisine, known for her innovative approach to<br/>modern cuisine. With years of experience in fine dining, she leads the kitchen with creativity and<br/>precision. Her expertise in flavor pairing and culinary techniques ensures that every dish not only<br/>meets but exceeds the expectations of the restaurant's guests. William's leadership fosters a<br/>collaborative and efficient kitchen environment, allowing her team to deliver consistently exceptional dining experiences.</p>
-                    <button type="submit" className="w-40 p-3 mt-8 font-bold bg-[#A6A182] text-white rounded-md hover:bg-white hover:text-black hover:scale-110 duration-300">
-                        Order Now
+                    <button className=" my-5 relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
+                         Order Now
+                        </span>
+                        <IoIosArrowRoundForward className="relative z-10 text-3xl transition-colors duration-300 group-hover:text-black" />
+                        <span className="absolute inset-0 bg-white w-0 left-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
                     </button>
                 </div>
             </div>
