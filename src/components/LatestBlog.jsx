@@ -13,11 +13,8 @@ const LatestBlog = () => {
           <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-customColor">
             latest blog
           </p>
-          <h1 className="text-3xl sm:text-2xl text-white mx-auto md:text-3xl lg:text-4xl font-bold mt-4 uppercase tracking-wide leading-snug">
-            explore our latest news
-          </h1>
-          <h1 className="text-3xl sm:text-2xl text-white w-10/12 mx-auto md:text-3xl lg:text-4xl font-bold mt-4 uppercase tracking-wide leading-snug">
-            <span className="text-customColor">and updates</span>
+          <h1 className="text-xl text-white w-10/12 mx-auto md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-1 uppercase tracking-wide leading-snug">
+          explore our latest news <span className="text-customColor">and updates</span>
           </h1>
         </div>
         <div className="grid lg:grid-cols-3 gap-6 md:grid mt-10">

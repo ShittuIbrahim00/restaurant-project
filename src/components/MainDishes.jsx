@@ -47,10 +47,10 @@ const MainDishes = () => {
           <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-customColor">
             our main dishes
           </p>
-          <h1 className="text-3xl sm:text-2xl text-white mx-auto md:text-3xl lg:text-4xl font-bold mt-4 uppercase tracking-wide leading-snug">
+          <h1 className="text-2xl sm:text-2xl text-white mx-auto md:text-3xl lg:text-4xl mt-1 font-bold uppercase tracking-wide leading-snug">
             satisfy your cravings with
           </h1>
-          <h1 className="text-3xl sm:text-2xl text-white w-10/12 mx-auto md:text-3xl lg:text-4xl font-bold mt-4 uppercase tracking-wide leading-snug">
+          <h1 className="text-2xl sm:text-2xl text-white w-10/12 mx-auto md:text-3xl lg:text-4xl mt-1 font-bold uppercase tracking-wide leading-snug">
             our <span className="text-customColor">signature mains</span>
           </h1>
         </div>
@@ -76,7 +76,7 @@ const MainDishes = () => {
           ))}
         </div>
       </div>
-      <p className="text-white text-center text-lg">
+      <p className="text-white text-center text-lg mb-2 lg:mb-10">
         Hungry for Something Delicious?{" "}
         <span className="underline text-customColor hover:text-white">
           View All Dishes!

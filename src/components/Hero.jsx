@@ -21,30 +21,30 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 flex items-center">
         {/* Content */}
-        <div className="w-[90%] mx-auto text-white px-4 sm:px-8 md:px-16">
+        <div className="w-[90%] mx-auto text-white px-4 sm:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 items-center">
             {/* Text Content */}
-            <div className="text-center lg:text-left mx-auto mt-64 lg:mt-4 md:mt-6 sm:py-32 md:py-40 lg:py-32">
-              <p className="text-xs md:text-sm mt-24 lg:mt-20 md:mt-10 font-bold uppercase tracking-widest text-customColor">
+            <div className="text-center lg:text-left mx-auto mt-64 xs: lg:mt-4 md:mt-52 md:py-0 lg:py-32">
+              <p className="text-xs md:text-sm mt-24 lg:mt-20 md:mt-40 font-bold uppercase tracking-widest text-customColor">
                 Art of Fine Dining
               </p>
 
-              <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mt-2 uppercase leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-2 md:mt-1 uppercase leading-tight">
                 Dining Redefined
               </h1>
 
-              <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mt-2 uppercase leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:hidden lg:block xl:block lg:text-4xl xl:text-5xl font-bold md:mt-1 uppercase leading-tight">
                 With <span className="text-customColor">Every Bite</span>
               </h1>
 
-              <p className="mt-4 text-sm sm:text-base text-gray-300 max-w-lg mx-auto lg:mx-0">
+              <p className="mt-1 md:mt-2 text-sm sm:text-base text-gray-300 max-w-lg mx-auto lg:mx-0">
                 Immerse yourself in a dining experience like no other, where
                 every dish is a masterpiece of flavor, crafted with care and
                 precision from the freshest ingredients.
               </p>
 
               {/* Buttons */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
+              <div className="mt-3 md:mt-3 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 {/* "Book a Table" Button */}
                 <button onClick={()=>navigate("/reservation")} className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
@@ -62,9 +62,9 @@ const Hero = () => {
             </div>
 
             {/* Hero Image */}
-            <div className="flex justify-center lg:justify-end lg:mt-40 relative">
+            <div className="flex justify-center lg:mt-40 xl:mt-64 relative">
               {/* Hero Image Wrapper */}
-              <div className="relative w-64 sm:w-72 md:w-80 lg:w-96">
+              <div className="relative w-64 sm:w-72 md:w-80 lg:w-92 xl:w-96">
                 {/* Main Hero Image */}
                 <div className="relative overflow-hidden rounded-full group">
                   <img

@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 const Service = () => {
   return (
     <div className=''>
-        <div className='relative w-full h-screen '>
+        <div className='relative w-full min-h-screen'>
             <div className='absolute inset-0'>
                 <img
                     src="https://html.awaikenthemes.com/spicyhunt/images/page-header-bg.jpg"
@@ -13,7 +13,7 @@ const Service = () => {
                 />
             </div>
             <div className='absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-70'>
-                <h2 className='text-7xl text-white mb-44'>SERVICES</h2>
+                <h2 className='text-4xl md:text-5xl lg:text-7xl text-white'>SERVICES</h2>
             </div>
         </div>
 

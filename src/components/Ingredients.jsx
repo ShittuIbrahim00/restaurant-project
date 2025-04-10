@@ -48,20 +48,17 @@ const Ingredients = () => {
             <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-customColor">
               our ingredients
             </p>
-            <h1 className="text-2xl sm:text-xl md:text-2xl lg:text-4xl font-bold mt-4 uppercase leading-tight">
-              crafting dishes with
+            <h1 className="text-xl md:text-3xl lg:text-3xl xl:text-4xl font-bold mt-1 uppercase leading-tight">
+            crafting dishes with <span className="text-customColor">freshest flavors</span>
             </h1>
-            <h1 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-4 uppercase leading-tight">
-              <span className="text-customColor">freshest flavors</span>
-            </h1>
-            <p className="mt-4 text-sm sm:text-base text-gray-300 max-w-lg">
+            <p className="mt-2 text-sm sm:text-base text-gray-300 max-w-lg">
               We take pride in using only the freshest, hand-picked ingredients
               that are free from preservatives and artificial additives. Taste
               the difference with every bite as we serve dishes made from
               nature's finest.
             </p>
 
-            <div className="grid lg:grid-cols-3 gap-4 md:grid mt-6 text-center">
+            <div className="grid lg:grid-cols-3 gap-4 md:grid mt-3 text-center">
               <div className="flex justify-between gap-4 flex-col items-center">
                 <img src={bestQualities} alt="" />
                 <p className="font-extrabold md:text-md text-sm lg:text-xl">

@@ -28,19 +28,19 @@ const Menu = () => {
     <div className="bg-customGray px-4 min-h-screen font-merienda pt-10 pb-16">
       <div className="grid gap-4">
         {/* Text Content */}
-        <div className="text-center mx-auto mt-10">
+        <div className="text-center mx-auto mt-5">
           <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-customColor">
             from our menu
           </p>
-          <h1 className="text-3xl sm:text-2xl text-white mx-auto md:text-3xl lg:text-4xl font-bold mt-4 uppercase tracking-wide leading-snug">
+          <h1 className="text-xl text-white mx-auto md:text-3xl lg:text-4xl font-bold mt-1 uppercase tracking-wide leading-snug">
             an inspired menu that
           </h1>
-          <h1 className="text-3xl sm:text-2xl text-white w-10/12 mx-auto md:text-3xl lg:text-4xl font-bold mt-4 uppercase tracking-wide leading-snug">
+          <h1 className="text-xl text-white w-10/12 mx-auto md:text-3xl lg:text-4xl font-bold mt-1 uppercase tracking-wide leading-snug">
             <span className="text-customColor">blends tradition</span>
           </h1>
         </div>
         {/* Category Selector */}
-        <div className="bg-customRoundedBg flex flex-wrap justify-center gap-4 rounded-full px-4 py-3 w-full sm:w-4/5 md:w-2/3 lg:w-1/3 mx-auto my-4">
+        <div className="bg-customRoundedBg flex flex-wrap justify-center text-sm gap-2 md:text-lg md:gap-4 rounded-full px-4 py-3 w-full sm:w-4/5 md:w-2/3 lg:w-1/2 mx-auto">
           {categories.map((category) => (
             <p
               key={category}
@@ -56,7 +56,7 @@ const Menu = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-[92%] sm:w-[90%] lg:w-[82%] mx-auto my-8">
+        <div className="grid grid-cols-1 md:grid lg:grid-cols-2 lg:gap-8 gap-2 w-[92%] sm:w-[90%] lg:w-[92%] mx-auto my-2">
           {products[selectedCategory]?.map((product) => (
             <div
               key={product.id}
