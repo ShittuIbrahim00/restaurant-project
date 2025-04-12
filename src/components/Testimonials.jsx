@@ -24,11 +24,8 @@ const Testimonials = () => {
               <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-customColor">
                 our Testimonials
               </p>
-              <h1 className="text-2xl sm:text-2xl text-white mx-auto md:text-3xl lg:text-4xl font-bold mt-2 uppercase tracking-wide leading-snug">
-                real stories of memorable
-              </h1>
-              <h1 className="text-2xl sm:text-xl text-white  mx-auto md:text-2xl lg:text-3xl font-bold mt-2 uppercase tracking-wide leading-snug">
-                <span className="text-customColor">meals and experiences</span>
+              <h1 className="text-xl text-white  mx-auto md:text-2xl lg:text-3xl xl:text-5xl font-bold mt-1 uppercase tracking-wide leading-snug">
+              real stories of memorable <span className="text-customColor">meals and experiences</span>
               </h1>
             </div>
             {/* Category Selector */}

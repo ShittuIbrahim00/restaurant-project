@@ -39,7 +39,7 @@ const AboutUs = () => {
           {/* Hero Image */}
           <div className="flex justify-center lg:justify-start lg:mt-32 lg:mb-10 sm:mt-64 mt-64 md:mt-64 relative">
             {/* Hero Image Wrapper */}
-            <div className="relative w-64 sm:w-72 md:w-80 lg:w-96">
+            <div className="relative w-64 sm:w-72 md:w-80 lg:w-92 xl:w-96">
               {/* Main Hero Image */}
               <div className="relative overflow-hidden rounded-full group">
                 <img
@@ -88,10 +88,10 @@ const AboutUs = () => {
             <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-customColor">
               about us
             </p>
-            <h1 className="text-3xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mt-4 uppercase leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold mt-1 md:mt-1 uppercase leading-tight">
               Our Commitment to
             </h1>
-            <h1 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-4 uppercase leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-2xl xl:text-4xl font-bold mt-1 md:mt-1 uppercase leading-tight">
               Authenticity &{" "}
               <span className="text-customColor">excellence</span>
             </h1>
@@ -118,7 +118,7 @@ const AboutUs = () => {
 
             <div className="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
               {/* "Book a Table" Button */}
-              <button className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+              <button className="relative overflow-hidden text-white bg-customColor px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                   Order Now
                 </span>
@@ -126,7 +126,7 @@ const AboutUs = () => {
                 <span className="absolute inset-0 bg-white w-0 left-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </button>
               {/* "Book a Table" Button */}
-              <button className="relative overflow-hidden bg-white text-black px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+              <button className="relative overflow-hidden bg-white text-black px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   Read More
                 </span>
@@ -149,7 +149,7 @@ const AboutUs = () => {
                 />
               </div>
               <div>
-                <h1 className="text-2xl mb-2 font-extrabold capitalize">{about.title}</h1>
+                <h1 className="text-md md:text-lg lg:text-xl mb-2 font-extrabold capitalize">{about.title}</h1>
                 <p className="text-gray-400">
                   {about.descp}
                 </p>
