@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { PiPhoneThin } from "react-icons/pi";
+import ReserveTable from '../ReserveTable/ReserveTable';
 import ContactChefForm from '../ReserveTable/ContactChefForm'
 const ChefDetail = () => {
   const { id } = useParams()
@@ -38,7 +39,7 @@ const ChefDetail = () => {
           </div>
         </div>
       </div>
-      <div className='lg:pt-[600px] pt-[550px] mx-4 lg:flex items-start gap-9 '>
+      <div className='lg:pt-[620px] pt-[550px] mx-4 lg:flex items-start gap-9'>
         <div className=' lg:sticky lg:top-0'>
           <div className='lg:w-full '>
             <img src={chef?.img} alt={chef?.name} className='w-full rounded-2xl h-[450px]' />

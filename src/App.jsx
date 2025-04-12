@@ -30,7 +30,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="font-merienda min-h-screen overflow-hidden">
+    <div className="font-merienda min-h-screen">
       {!loading && <Navbar />}
       <CustomCursor />
       {loading ? (
