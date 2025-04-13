@@ -4,7 +4,7 @@ import { TfiWorld } from "react-icons/tfi";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import ReserveTable from '../ReserveTable/ReserveTable';
+
 
 const OurChef = () => {
     const chefs = [

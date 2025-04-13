@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import Home from "./pages/Home";
@@ -30,7 +30,7 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="font-merienda min-h-screen overflow-hidden">
+    <div className="font-merienda min-h-screen">
       {!loading && <Navbar />}
       <CustomCursor />
       {loading ? (
