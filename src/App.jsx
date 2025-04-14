@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import Home from "./pages/Home";
@@ -20,17 +20,21 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import Testimonial from "./pages/Testimonial";
 import Menu from "./pages/Menu";
+
 import About from "./pages/About";
 import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
+
+// 💡 Import the ProtectedRoute
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
 function App() {
   const [loading, setIsLoading] = useState(true);
   const location = useLocation();
-  const hideNavAndFooter = ["/", "/signup"].includes(location.pathname);
+  const hideNavAndFooter = ["/login", "/signup"].includes(location.pathname);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
@@ -45,28 +49,105 @@ function App() {
         <Loader />
       ) : (
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+
+          {/* Protected Routes */}
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/cart-checkout"
             element={
-              <Elements stripe={stripePromise}>
-                <CheckoutForm />
-              </Elements>
+              <ProtectedRoute>
+                <Elements stripe={stripePromise}>
+                  <CheckoutForm />
+                </Elements>
+              </ProtectedRoute>
             }
           />
-          <Route path="/chefs" element={<OurChef />} />
-          <Route path="/chefs/:id" element={<ChefDetail />} />
-          <Route path="/reservation" element={<BookTable />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/menudetail" element={<MenuItemDetail />} />
+          <Route
+            path="/chefs"
+            element={
+              <ProtectedRoute>
+                <OurChef />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chefs/:id"
+            element={
+              <ProtectedRoute>
+                <ChefDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/reservation"
+            element={
+              <ProtectedRoute>
+                <BookTable />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/service"
+            element={
+              <ProtectedRoute>
+                <Service />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <ProtectedRoute>
+                <About />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <ProtectedRoute>
+                <ContactUs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/menudetail"
+            element={
+              <ProtectedRoute>
+                <MenuItemDetail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/testimonial"
+            element={
+              <ProtectedRoute>
+                <Testimonial />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/menu"
+            element={
+              <ProtectedRoute>
+                <Menu />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Catch-all */}
           <Route path="*" element={<Error404 />} />
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/testimonial" element={<Testimonial />} />
-          <Route path="/menu" element={<Menu />} />
         </Routes>
       )}
       {!loading && !hideNavAndFooter && <Footer />}
