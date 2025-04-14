@@ -14,7 +14,6 @@ const Footer = () => {
           <div className='flex flex-col items-start gap-6'>
             <div>
               <img src="https://html.awaikenthemes.com/spicyhunt/images/logo.svg" alt="" className='' />
-
             </div>
             <div>
               <div className='flex items-center gap-4'>
