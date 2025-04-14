@@ -11,6 +11,12 @@ import OurChef from "./pages/OurChef";
 import ChefDetail from "./pages/ChefDetail";
 import Footer from "./footer/Footer";
 import BookTable from "./pages/BookTable";
+
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
+import Testimonial from "./pages/Testimonial";
+import Menu from "./pages/Menu";
+
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
 // import CheckoutForm from "./pages/CheckoutForm";
@@ -54,6 +60,10 @@ function App() {
             <Route path="/chefs/:id" element={<ChefDetail />} />
             <Route path="/reservation" element={<BookTable />} />
             <Route path="*" element={<Error404 />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/testimonial" element={<Testimonial />} />
+            <Route path="/menu" element={<Menu />} />
           </Routes>
         )}
         <div className="">
