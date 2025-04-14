@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import Home from "./pages/Home";
@@ -16,28 +16,36 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./pages/CheckoutForm";
 import { Analytics } from "@vercel/analytics/react";
 
-const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
+import Testimonial from "./pages/Testimonial";
+import Menu from "./pages/Menu";
 import About from "./pages/About";
 import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
 
+const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
+
 function App() {
   const [loading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const hideNavAndFooter = ["/", "/signup"].includes(location.pathname);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <div className="font-merienda min-h-screen overflow-hidden">
-      {!loading && <Navbar />}
+      {!loading && !hideNavAndFooter && <Navbar />}
       <CustomCursor />
       {loading ? (
         <Loader />
       ) : (
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route
             path="/cart-checkout"
@@ -55,9 +63,13 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/menudetail" element={<MenuItemDetail />} />
           <Route path="*" element={<Error404 />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/testimonial" element={<Testimonial />} />
+          <Route path="/menu" element={<Menu />} />
         </Routes>
       )}
-      {!loading && <Footer />}
+      {!loading && !hideNavAndFooter && <Footer />}
       <Analytics />
     </div>
   );

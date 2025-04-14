@@ -9,6 +9,7 @@ import iconCompany from "../assets/icon-company-experience.svg";
 import aboutDetailsOne from "../assets/icon-about-detail-1.svg";
 import aboutDetailsTwo from "../assets/icon-about-detail-2.svg";
 import aboutDetailsThree from "../assets/icon-about-detail-3.svg";
+import { useNavigate } from "react-router-dom";
 
 const AboutUs = () => {
   const data = [
@@ -31,6 +32,13 @@ const AboutUs = () => {
       descp: "With local ingredients, unique spins on traditional flavors.",
     },
   ];
+  const navigate = useNavigate()
+  const linkToReadMoreAboutUs = () => {
+    navigate("/about")
+  };
+  const linkToMenu = () => {
+    navigate("/menu")
+  };
   return (
     <div className="bg-customBlack p-4 min-h-screen font-merienda">
       {/* Content */}
@@ -118,7 +126,7 @@ const AboutUs = () => {
 
             <div className="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
               {/* "Book a Table" Button */}
-              <button className="relative overflow-hidden text-white bg-customColor px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+              <button onClick={linkToMenu} className="relative overflow-hidden text-white bg-customColor px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                   Order Now
                 </span>
@@ -126,7 +134,7 @@ const AboutUs = () => {
                 <span className="absolute inset-0 bg-white w-0 left-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </button>
               {/* "Book a Table" Button */}
-              <button className="relative overflow-hidden bg-white text-black px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+              <button onClick={linkToReadMoreAboutUs} className="relative overflow-hidden bg-white text-black px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   Read More
                 </span>

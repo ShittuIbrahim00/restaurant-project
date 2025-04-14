@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { FaArrowRight } from "react-icons/fa6";
-import { CiFacebook } from "react-icons/ci";
-import { CiTwitter } from "react-icons/ci";
-import { CiInstagram } from "react-icons/ci";
 import {
   IoIosCheckmarkCircleOutline,
   IoIosArrowRoundForward,
 } from "react-icons/io";
+import { motion } from "framer-motion";
+import { TfiWorld } from "react-icons/tfi";
+import { FaFacebookF } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
 import aboutUsImg from "../assets/about-us-image.jpg";
 import aboutUsImgTwo from "../assets/about-us-img-2.jpg";
 import iconCompany from "../assets/icon-company-experience.svg";
@@ -14,10 +14,36 @@ import aboutDetailsOne from "../assets/icon-about-detail-1.svg";
 import aboutDetailsTwo from "../assets/icon-about-detail-2.svg";
 import aboutDetailsThree from "../assets/icon-about-detail-3.svg";
 import DailyOffers from "../components/DailyOffers";
+import { Link, useNavigate } from "react-router-dom";
 
 const About = () => {
   const [selected, setSelected] = useState("mission"); //default vision
-
+  const chefs = [
+    {
+      id: 1,
+      img: "https://html.awaikenthemes.com/spicyhunt/images/team-1.jpg",
+      name: "Sophia Martinez",
+      position: "Executive Chef",
+    },
+    {
+      id: 2,
+      img: "https://html.awaikenthemes.com/spicyhunt/images/team-2.jpg",
+      name: "Liam Patel",
+      position: "Sous Chef",
+    },
+    {
+      id: 3,
+      img: "https://html.awaikenthemes.com/spicyhunt/images/team-3.jpg",
+      name: "Isabella Carter",
+      position: "Pastry Chef",
+    },
+    {
+      id: 4,
+      img: "https://html.awaikenthemes.com/spicyhunt/images/team-4.jpg",
+      name: "Ethan Johnson",
+      position: "Restaurant Manager",
+    },
+  ];
   //data
   const content = {
     mission: {
@@ -76,6 +102,25 @@ const About = () => {
       ? `text-[#A6A182]`
       : `text-white hover:text-[#A6A182]`;
   };
+
+  const navigate = useNavigate();
+  const linkToReadMoreAboutUs = () => {
+    navigate("/about");
+  };
+  const linkToMenu = () => {
+    navigate("/menu");
+  };
+
+  const [open, setOpen] = useState({});
+
+  const handleMouseOver = (id) => {
+    setOpen((prev) => ({ ...prev, [id]: true }));
+  };
+
+  const handleMouseLeave = (id) => {
+    setOpen((prev) => ({ ...prev, [id]: false }));
+  };
+
   return (
     <div className="">
       <div className="relative w-full min-h-screen">
@@ -179,7 +224,10 @@ const About = () => {
 
               <div className="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 {/* "Book a Table" Button */}
-                <button className="relative overflow-hidden text-white bg-customColor px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+                <button
+                  onClick={linkToMenu}
+                  className="relative overflow-hidden text-white bg-customColor px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group"
+                >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                     Order Now
                   </span>
@@ -187,7 +235,10 @@ const About = () => {
                   <span className="absolute inset-0 bg-white w-0 left-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </button>
                 {/* "Book a Table" Button */}
-                <button className="relative overflow-hidden bg-white text-black px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+                <button
+                  onClick={linkToReadMoreAboutUs}
+                  className="relative overflow-hidden bg-white text-black px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group"
+                >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                     Read More
                   </span>
@@ -304,61 +355,64 @@ const About = () => {
               ALWAYS QUALITY
             </h5>
             <h2 className="text-white text-2xl lg:w-[60%] lg:text-4xl md:text-3xl font-bold">
-            THE TALENTED MINDS BEHIND EVERY <span className="text-[#A6A182]">FLAVOURFUL DISH</span>
+              THE TALENTED MINDS BEHIND EVERY{" "}
+              <span className="text-[#A6A182]">FLAVOURFUL DISH</span>
             </h2>
           </div>
 
           {/* Team Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-6">
-            {[
-              {
-                name: "Esther",
-                img: "https://html.awaikenthemes.com/spicyhunt/images/team-1.jpg",
-              },
-              {
-                name: "Smith",
-                img: "https://html.awaikenthemes.com/spicyhunt/images/team-2.jpg",
-              },
-              {
-                name: "Johnson",
-                img: "https://html.awaikenthemes.com/spicyhunt/images/team-3.jpg",
-              },
-              {
-                name: "Lee",
-                img: "https://html.awaikenthemes.com/spicyhunt/images/team-4.jpg",
-              },
-            ].map((person, idx) => (
-              <div
-                key={idx}
-                className="relative flex flex-col items-center rounded-xl p-4"
-              >
-                <img
-                  src={person.img}
-                  alt={person.name}
-                  className="rounded-2xl w-full h-[18rem] object-cover hover:scale-105 duration-500"
-                />
-                <div className="absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-                  <h3 className="text-xl sm:text-2xl font-semibold">
-                    {person.name}
-                  </h3>
-                  <div className="flex gap-4 mt-2 justify-center">
-                    <a href="#" className="hover:text-[#A6A182]">
-                      <CiFacebook className="size-8 sm:size-10" />
-                    </a>
-                    <a href="#" className="hover:text-[#A6A182]">
-                      <CiTwitter className="size-8 sm:size-10" />
-                    </a>
-                    <a href="#" className="hover:text-[#A6A182]">
-                      <CiInstagram className="size-8 sm:size-10" />
-                    </a>
-                  </div>
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2">
+            {chefs.map((e) => (
+              <div key={e.id} className="mx-auto">
+                <div
+                  onMouseOver={() => handleMouseOver(e.id)}
+                  onMouseLeave={() => handleMouseLeave(e.id)}
+                  className="relative"
+                >
+                  <Link to={`/chefs/${e.id}`} className="mx-auto">
+                    <div
+                      style={{ backgroundImage: `url(${e.img})` }}
+                      className="rounded-2xl object-cover bg-cover bg-center lg:w-[280px] h-[400px] mt-10"
+                    >
+                      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent"></div>
+                      <div className="absolute bottom-0 left-0  w-full p-4 flex flex-col items-center text-white">
+                        <h1 className="font-bold text-2xl text-center font-merienda">
+                          {e.name}
+                        </h1>
+                        <p className="text-gray-400 text-lg leading-7">
+                          {e.position}
+                        </p>
+
+                        {/* Motion Div for Smooth Pop-up */}
+                        {open[e.id] && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 30 }} // Start hidden and lower
+                            animate={{ opacity: 1, y: 0 }} // Animate into view
+                            exit={{ opacity: 0, y: 30 }} // Animate out when hiding
+                            transition={{ duration: 0.4, ease: "easeInOut" }} // Smooth slow effect
+                            className="flex items-center mt-3 gap-6"
+                          >
+                            <div className="rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none">
+                              <TfiWorld />
+                            </div>
+                            <div className="rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none">
+                              <FaFacebookF />
+                            </div>
+                            <div className="rounded-full h-[40px] w-[40px] flex items-center justify-center border border-white hover:bg-customColor hover:text-black hover:border-none">
+                              <FaInstagram />
+                            </div>
+                          </motion.div>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Footer Note */}
-          <h3 className="text-center text-white text-sm sm:text-base">
+          <h3 className="text-center mt-6 text-white text-sm sm:text-base">
             Meet the passionate team behind every flavour and experience. Meet
             our team.
           </h3>

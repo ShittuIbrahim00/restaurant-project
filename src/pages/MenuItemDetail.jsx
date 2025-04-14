@@ -88,7 +88,7 @@ const MenuItemDetail = () => {
                 <IoIosArrowRoundForward className="relative z-10 text-2xl group-hover:text-black" />
                 <span className="absolute inset-0 bg-white w-0 transition-all duration-300 ease-in-out group-hover:w-full" />
               </button>
-              <button className="relative overflow-hidden bg-white text-black px-8 py-3 rounded-full font-bold flex items-center gap-2 group">
+              <button onClick={() => navigate("/menu")} className="relative overflow-hidden bg-white text-black px-8 py-3 rounded-full font-bold flex items-center gap-2 group">
                 <span className="relative z-10 group-hover:text-white">
                   Explore Menu
                 </span>

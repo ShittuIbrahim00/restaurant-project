@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { PiPhoneThin } from "react-icons/pi";
-import ReserveTable from "../ReserveTable/ReserveTable";
 import ContactChefForm from "../ReserveTable/ContactChefForm";
 const ChefDetail = () => {
   const { id } = useParams();
