@@ -22,7 +22,6 @@ const Navbar = () => {
   const desktopDropdownRef = useRef(null);
   const mobileDropdownRef = useRef(null);
 
-  // ✅ Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -65,7 +64,7 @@ const Navbar = () => {
           ref={desktopDropdownRef}
           className="hidden lg:flex items-center text-md text-white gap-10 lg:gap-6 lg:text-sm xl:gap-10 xl:text-lg font-merienda"
         >
-          {["About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
+          {["About Us", "Services", "Menu", "Chefs", "Contact Us", "Cart"].map(
             (item, index) => (
               <div key={index} className="relative">
                 <p
@@ -80,6 +79,7 @@ const Navbar = () => {
                     if (item === "Services") navigate("/service");
                     if (item === "Contact Us") navigate("/contact");
                     if (item === "Menu") navigate("/menu");
+                    if (item === "Chefs") navigate("/chefs");
                   }}
                 >
                   {item}
@@ -178,7 +178,7 @@ const Navbar = () => {
         } overflow-hidden bg-customColor flex flex-col items-center text-white`}
       >
         <div ref={mobileDropdownRef} className="w-full">
-          {["About Us", "Services", "Menu", "Pages", "Contact Us", "Cart"].map(
+          {["About Us", "Services", "Menu", "Chefs", "Contact Us", "Cart"].map(
             (item, index) => (
               <div key={index} className="w-full">
                 <p
@@ -206,6 +206,10 @@ const Navbar = () => {
                     }
                     if (item === "Menu") {
                       navigate("/menu");
+                      setIsOpen(false);
+                    }
+                    if (item === "Chefs") {
+                      navigate("/chefs");
                       setIsOpen(false);
                     }
                   }}

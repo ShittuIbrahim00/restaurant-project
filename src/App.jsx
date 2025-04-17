@@ -26,7 +26,6 @@ import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
 
-// 💡 Import the ProtectedRoute
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
@@ -55,14 +54,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
 
           {/* Protected Routes */}
-          <Route
-            path="/cart"
-            element={
-              <ProtectedRoute>
-                <Cart />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/cart" element={<Cart />} />
           <Route
             path="/cart-checkout"
             element={
@@ -73,22 +65,8 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/chefs"
-            element={
-              <ProtectedRoute>
-                <OurChef />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/chefs/:id"
-            element={
-              <ProtectedRoute>
-                <ChefDetail />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/chefs" element={<OurChef />} />
+          <Route path="/chefs/:id" element={<ChefDetail />} />
           <Route
             path="/reservation"
             element={
@@ -97,54 +75,12 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/service"
-            element={
-              <ProtectedRoute>
-                <Service />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <ProtectedRoute>
-                <About />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <ProtectedRoute>
-                <ContactUs />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/menudetail"
-            element={
-              <ProtectedRoute>
-                <MenuItemDetail />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/testimonial"
-            element={
-              <ProtectedRoute>
-                <Testimonial />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/menu"
-            element={
-              <ProtectedRoute>
-                <Menu />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/service" element={<Service />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/menudetail" element={<MenuItemDetail />} />
+          <Route path="/testimonial" element={<Testimonial />} />
+          <Route path="/menu" element={<Menu />} />
 
           {/* Catch-all */}
           <Route path="*" element={<Error404 />} />
