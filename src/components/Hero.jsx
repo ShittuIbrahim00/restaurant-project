@@ -8,7 +8,11 @@ import { BiLogoPlayStore } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const loggedUser = JSON.parse(localStorage.getItem("restaurant-customer"));
+  const limitedName = loggedUser?.name?.slice(0, 10) || "";
+  console.log(limitedName);
+
   return (
     <div className="relative font-merienda min-h-screen">
       {/* Hero Background */}
@@ -19,12 +23,22 @@ const Hero = () => {
       />
 
       {/* Overlay */}
+
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 flex items-center">
+        <div className="absolute top-24 left-1/2 transform -translate-x-1/2 w-full px-4 text-center sm:top-28 md:top-[104px] lg:top-28 xl:top-36">
+          {limitedName && (
+            <p className="text-white text-sm sm:text-base xl:text-xl font-semibold text-center">
+              Hello <span className="text-customColor">{limitedName}</span>,
+              Welcome to <span className="text-customColor">SpicyHunt</span>
+            </p>
+          )}
+        </div>
+
         {/* Content */}
         <div className="w-[90%] mx-auto text-white px-4 sm:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 items-center">
             {/* Text Content */}
-            <div className="text-center lg:text-left mx-auto mt-64 xs: lg:mt-4 md:mt-52 md:py-0 lg:py-32">
+            <div className="text-center lg:text-left mx-auto mt-64 xs: lg:mt-4 md:mt-56 md:py-0 lg:py-32">
               <p className="text-xs md:text-sm mt-24 lg:mt-20 md:mt-40 font-bold uppercase tracking-widest text-customColor">
                 Art of Fine Dining
               </p>
@@ -46,7 +60,10 @@ const Hero = () => {
               {/* Buttons */}
               <div className="mt-3 md:mt-3 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 {/* "Book a Table" Button */}
-                <button onClick={()=>navigate("/reservation")} className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+                <button
+                  onClick={() => navigate("/reservation")}
+                  className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group"
+                >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
                     Book a table
                   </span>

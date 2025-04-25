@@ -1,32 +1,44 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+// import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 
 const SignUp = () => {
-  const { setUser } = useContext(AuthContext); // from AuthContext
+  const restaurantURL = "https://restaurant-backend-wwjm.onrender.com/api/v1";
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     password: "",
-    gender: "",
+    role: "customer"
   });
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Simulate login by storing user in memory (AuthContext)
-    setUser(formData);
-
-    // Redirect to homepage
-    navigate("/login");
+    try {
+      const response = await axios.post(`${restaurantURL}/register`, formData);
+      if (response.status === 201) {
+        console.log(response);
+        navigate("/login");
+        setFormData({
+          name: "",
+          email: "",
+          password: "",
+          role: "",
+        });
+      };
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -39,14 +51,17 @@ const SignUp = () => {
       </div>
 
       <div className="md:max-w-md lg:max-w-xl max-w-xs w-full bg-white rounded-2xl mb-10">
-        <form onSubmit={handleSubmit} className="w-full lg:pt-12 lg:pb-7 p-5 lg:px-9">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full lg:pt-12 lg:pb-7 p-5 lg:px-9"
+        >
           <div className="flex flex-col gap-3 items-start">
             <label htmlFor="name" className="font-normal text-md">
               Your Name
             </label>
             <input
               type="text"
-              id="name"
+              name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="e.g John"
@@ -62,24 +77,10 @@ const SignUp = () => {
               </label>
               <input
                 type="email"
-                id="email"
+                name="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="e.g John@example.com"
-                className="w-full border border-gray-300 p-4 rounded-xl"
-                required
-              />
-            </div>
-            <div className="flex flex-col gap-3 items-start w-full lg:mt-0 md:mt-4">
-              <label htmlFor="phone" className="font-normal text-md">
-                Phone Number
-              </label>
-              <input
-                type="number"
-                id="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="09135611021"
                 className="w-full border border-gray-300 p-4 rounded-xl"
                 required
               />
@@ -93,33 +94,18 @@ const SignUp = () => {
               </label>
               <input
                 type="password"
-                id="password"
+                name="password"
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full border border-gray-300 p-4 rounded-xl"
                 required
               />
             </div>
-            <div className="flex flex-col gap-3 items-start w-full lg:mt-0 md:mt-4">
-              <label htmlFor="gender" className="font-normal text-md">
-                Gender
-              </label>
-              <select
-                id="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                className="w-full rounded-xl border p-5"
-                required
-              >
-                <option value="">Select</option>
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-              </select>
-            </div>
           </div>
 
           <div className="w-full mt-4 lg:mt-12">
             <button
+              onClick={handleSubmit}
               type="submit"
               className="bg-customColor transition-all duration-300 ease-in-out hover:bg-black text-white font-bold w-full p-4 rounded-full"
             >
