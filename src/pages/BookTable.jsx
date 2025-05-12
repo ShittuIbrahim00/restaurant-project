@@ -1,10 +1,12 @@
 import React from 'react'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa6'
 import { TfiWorld } from 'react-icons/tfi'
-import { Link } from 'react-router-dom'
-import ContactForm from '../ReserveTable/ContactForm'
-import ReserveTable from '../ReserveTable/ReserveTable'
+import { Link, useParams } from 'react-router-dom'
+import ReserveTableForm from '../ReserveTable/ReserveTableForm'
+
+
 const BookTable = () => {
+  const {id} = useParams()
   return (
     <div className="bg-black opacity-95  pb-14">
       <div className="relative">
@@ -58,9 +60,7 @@ const BookTable = () => {
               </div>
             </div>
           </div>
-          <div className='lg:w-[50%] w-full pt-5 px-4'>
-            <ContactForm />
-          </div>
+          <ReserveTableForm id={id}/>
 
         </div>
       </div>

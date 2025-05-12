@@ -5,10 +5,12 @@ import { TfiWorld } from 'react-icons/tfi';
 import { FaFacebookF } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 import ReserveTable from '../ReserveTable/ReserveTable';
+import ContactForm from '../ReserveTable/ContactForm'
 const Footer = () => {
   return (
     <div>
-      <ReserveTable/>
+      <ContactForm/>
+  
       <div className='bg-customBlack pb-12'>
         <div className='lg:pt-28  p-4'>
           <div className='flex flex-col items-start gap-6'>

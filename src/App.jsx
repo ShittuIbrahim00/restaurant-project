@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import Home from "./pages/Home";
@@ -21,17 +21,24 @@ import About from "./pages/About";
 import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
+import AllTable from "./ReserveTable/AllTable";
+import OrderDetails from "./ReserveTable/orderDetail";
 
 function App() {
   const [loading, setIsLoading] = useState(true);
-
+  const location = useLocation();
+  
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Check if current path is /tables or /orderDetail
+  const hideHeaderFooter = ["/tables", "/orderDetail"].includes(location.pathname);
+
   return (
     <div className="font-merienda min-h-screen">
-      {!loading && <Navbar />}
+      {!loading && !hideHeaderFooter && <Navbar />}
       <CustomCursor />
       {loading ? (
         <Loader />
@@ -49,15 +56,17 @@ function App() {
           />
           <Route path="/chefs" element={<OurChef />} />
           <Route path="/chefs/:id" element={<ChefDetail />} />
-          <Route path="/reservation" element={<BookTable />} />
+          <Route path="/reservation/:id" element={<BookTable />} />
           <Route path="/service" element={<Service />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/menudetail" element={<MenuItemDetail />} />
+          <Route path="/tables" element={<AllTable />} />
+          <Route path="/orderDetail" element={<OrderDetails />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       )}
-      {!loading && <Footer />}
+      {!loading && !hideHeaderFooter && <Footer />}
       <Analytics />
     </div>
   );
