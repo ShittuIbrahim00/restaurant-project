@@ -1,18 +1,34 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import {toast} from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
-const ReserveTableForm = ({id}) => {
-    
-    const token = JSON.parse(localStorage.getItem(''))
+const ReserveTableForm = ({ id }) => {
+    const navigate = useNavigate();
+    const [token, setToken] = useState('');
+    const [userId, setUserId] = useState('');
     const [error, setError] = useState({});
     const [loader, setLoader] = useState(false);
     const [formData, setFormData] = useState({
         reservation_Date: '',
         reservation_Time: '',
         qty_persons: '',
+        userId: ''
     });
+
+    useEffect(() => {
+        const userToken = JSON.parse(localStorage.getItem('restaurant-customer'));
+        if (userToken) {
+            setToken(userToken.token);
+            setUserId(userToken._id);
+
+            // Directly update formData after getting userId
+            setFormData(prev => ({
+                ...prev,
+                userId: userToken._id
+            }));
+        }
+    }, []);
 
     const handleChange = (e) => {
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -21,6 +37,7 @@ const ReserveTableForm = ({id}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoader(true);
+        console.log(id)
 
         const newErrors = {};
 
@@ -37,18 +54,28 @@ const ReserveTableForm = ({id}) => {
         setError({});
 
         try {
-            const resp = await axios.post(`https://restaurant-backend-wwjm.onrender.com/api/v1/create-reserve-table/${id}`, formData, {headers: {'bearer': token}});
+            const resp = await axios.post(
+                `http://localhost:5000/api/v1/create-reserve-table/${id}`,
+                formData,
+                { headers: 
+                    { 'Authorization': `Bearer ${token}` },
+                }
+            );
+            console.log("API Response:", resp);
 
-            if (resp.data.success) {
+            if (resp.data.success === true) {
                 setLoader(false);
+                localStorage.setItem('reserveTable', JSON.stringify(resp.data.data));
                 toast.success(resp.data.msg);
+                navigate('/orderDetail');
             } else {
                 setLoader(false);
                 toast.error(resp.data.msg);
             }
         } catch (error) {
+             console.log(error)
             setLoader(false);
-            toast.error('An unexpected error occurred');
+            toast.error(error?.response?.data?.msg);
         }
     };
 
@@ -74,7 +101,12 @@ const ReserveTableForm = ({id}) => {
                 </div>
 
                 <div className='w-full mt-4 lg:mt-12'>
-                    <button className='bg-customColor transition-all duration-300 ease-in-out hover:bg-black text-white font-bold w-full p-4 rounded-full'>{`${loader ? 'Please Wait while we process your request...' : 'Reserve Now'}`}</button>
+                    <button 
+                        className='bg-customColor transition-all duration-300 ease-in-out hover:bg-black text-white font-bold w-full p-4 rounded-full'
+                        disabled={loader}
+                    >
+                        {loader ? 'Please Wait while we process your request...' : 'Reserve Now'}
+                    </button>
                 </div>
             </form>
         </div>

@@ -4,7 +4,6 @@ import { TfiWorld } from 'react-icons/tfi'
 import { Link, useParams } from 'react-router-dom'
 import ReserveTableForm from '../ReserveTable/ReserveTableForm'
 
-
 const BookTable = () => {
   const {id} = useParams()
   return (
@@ -17,7 +16,7 @@ const BookTable = () => {
         <div className="flex justify-center absolute top-[270px] items-center w-full">
           <div>
             <h1 className="leading-loose md:text-4xl sm:text-3xl text-3xl lg:text-6xl font-merienda font-bold text-white">
-              OUR CHEFS
+             Reserve Your Table
             </h1>
             <div className="flex text-gray-400 mt-3 text-lg justify-center gap-2">
               <Link to="/">Home</Link>

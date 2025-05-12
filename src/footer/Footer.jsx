@@ -9,14 +9,13 @@ import ContactForm from '../ReserveTable/ContactForm'
 const Footer = () => {
   return (
     <div>
-      <ContactForm/>
+      {/* <ContactForm/> */}
   
       <div className='bg-customBlack pb-12'>
         <div className='lg:pt-28  p-4'>
           <div className='flex flex-col items-start gap-6'>
             <div>
               <img src="https://html.awaikenthemes.com/spicyhunt/images/logo.svg" alt="" className='' />
-
             </div>
             <div>
               <div className='flex items-center gap-4'>

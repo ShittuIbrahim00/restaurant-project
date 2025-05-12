@@ -7,8 +7,10 @@ import dishImgOne from "../assets/our-dish-image-1.jpg";
 import dishImgTwo from "../assets/our-dish-image-2.jpg";
 import dishImgThree from "../assets/our-dish-image-3.jpg";
 import dishImgFour from "../assets/our-dish-image-4.jpg";
+import { useNavigate } from "react-router-dom";
 
 const MainDishes = () => {
+  const navigate = useNavigate()
   const data = [
     {
       id:1,
@@ -39,6 +41,9 @@ const MainDishes = () => {
         "Our appetizers are the perfect way to begin your dining experience flavors.",
     },
   ];
+  const linkToMenu = () => {
+    navigate("/menu")
+  };
   return (
     <div className="bg-customGray p-4 min-h-screen font-merienda">
       <div className="grid gap-4">
@@ -78,7 +83,7 @@ const MainDishes = () => {
       </div>
       <p className="text-white text-center text-lg mb-2 lg:mb-10">
         Hungry for Something Delicious?{" "}
-        <span className="underline text-customColor hover:text-white">
+        <span onClick={linkToMenu} className="underline text-customColor hover:text-white">
           View All Dishes!
         </span>
       </p>
