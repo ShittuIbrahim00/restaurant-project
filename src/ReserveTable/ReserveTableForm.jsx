@@ -56,15 +56,13 @@ const ReserveTableForm = ({ id }) => {
 
     setError({});
 
-        try {
-            const resp = await axios.post(
-                `https://restaurant-backend-wwjm.onrender.com/api/v1/create-reserve-table/${id}`,
-                formData,
-                { headers: 
-                    { 'Authorization': `Bearer ${token}` },
-                }
-            );
-            console.log("API Response:", resp);
+    try {
+      const resp = await axios.post(
+        `https://restaurant-backend-wwjm.onrender.com/api/v1/create-reserve-table/${id}`,
+        formData,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log("API Response:", resp);
 
       if (resp.data.success === true) {
         setLoader(false);

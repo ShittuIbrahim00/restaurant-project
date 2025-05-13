@@ -4,15 +4,8 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import CustomModal from "./Modal";
 import heroBG from "../assets/hero-bg.jpg";
-import {
-    CalendarIcon,
-    ClockIcon,
-    EnvelopeIcon,
-    UserCircleIcon,
-    UsersIcon,
-    TableCellsIcon,
-    CurrencyDollarIcon,
-  } from "@heroicons/react/24/outline";
+import { CalendarIcon, ClockIcon, EnvelopeIcon, UserCircleIcon, UsersIcon, TableCellsIcon, CurrencyDollarIcon,
+} from "@heroicons/react/24/outline";
 
 const OrderDetails = () => {
   const navigate = useNavigate();
@@ -34,21 +27,20 @@ const OrderDetails = () => {
     fetchData();
   }, []);
 
-    const cancelReservation = async () => {
-        try {
-            const resp = await axios.delete(`https://restaurant-backend-wwjm.onrender.com/api/v1/cancel-reservation/${id}`);
-            if (resp.data.success) {
-                toast.success(resp.data.msg);
-                setShowModal(false);
-                navigate('/')
-            } else toast.error(resp.data.msg);
-        } catch (error) {
-            toast.error('An error occurred');
-        }
-    };
-
-
-
+  const cancelReservation = async () => {
+    try {
+      const resp = await axios.delete(
+        `https://restaurant-backend-wwjm.onrender.com/api/v1/cancel-reservation/${id}`
+      );
+      if (resp.data.success) {
+        toast.success(resp.data.msg);
+        setShowModal(false);
+        navigate("/");
+      } else toast.error(resp.data.msg);
+    } catch (error) {
+      toast.error("An error occurred");
+    }
+  };
 
   return (
     <div className="">
@@ -70,97 +62,99 @@ const OrderDetails = () => {
         </div>
       </div>
       <div className="bg-customGray text-white min-h-screen py-8 font-merienda">
-      {/* <Toaster position="top-right" /> */}
+        {/* <Toaster position="top-right" /> */}
 
-      <div className="max-w-4xl mx-auto bg-white text-gray-800 rounded-lg shadow-lg p-6">
-        {/* Reservation Info */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <InfoItem
-            icon={<TableCellsIcon className="h-5 w-5 text-orange-400" />}
-            label="Table Number"
-            value={data?.table?.tableNumber}
-          />
-          <InfoItem
-            icon={<UsersIcon className="h-5 w-5 text-orange-400" />}
-            label="Qty Persons"
-            value={data.qty_persons}
-          />
-          <InfoItem
-            icon={<ClockIcon className="h-5 w-5 text-orange-400" />}
-            label="Reservation Time"
-            value={data?.reservation_Time}
-          />
-          <InfoItem
-            icon={<UserCircleIcon className="h-5 w-5 text-orange-400" />}
-            label="Username"
-            value={data?.user?.name}
-          />
-          <InfoItem
-            icon={<EnvelopeIcon className="h-5 w-5 text-orange-400" />}
-            label="Email"
-            value={data?.user?.email}
-          />
-          <InfoItem
-            icon={<CalendarIcon className="h-5 w-5 text-orange-400" />}
-            label="Reservation Date"
-            value={new Date(data?.reservation_Date).toLocaleDateString()}
-          />
-        </div>
-
-        {/* Total */}
-        <div className="flex justify-between items-center mt-8 border-t pt-4">
-          <div className="flex items-center gap-2">
-            <CurrencyDollarIcon className="h-6 w-6 text-green-600" />
-            <span className="text-lg font-semibold text-gray-700">Total:</span>
+        <div className="max-w-4xl mx-auto bg-white text-gray-800 rounded-lg shadow-lg p-6">
+          {/* Reservation Info */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <InfoItem
+              icon={<TableCellsIcon className="h-5 w-5 text-orange-400" />}
+              label="Table Number"
+              value={data?.table?.tableNumber}
+            />
+            <InfoItem
+              icon={<UsersIcon className="h-5 w-5 text-orange-400" />}
+              label="Qty Persons"
+              value={data.qty_persons}
+            />
+            <InfoItem
+              icon={<ClockIcon className="h-5 w-5 text-orange-400" />}
+              label="Reservation Time"
+              value={data?.reservation_Time}
+            />
+            <InfoItem
+              icon={<UserCircleIcon className="h-5 w-5 text-orange-400" />}
+              label="Username"
+              value={data?.user?.name}
+            />
+            <InfoItem
+              icon={<EnvelopeIcon className="h-5 w-5 text-orange-400" />}
+              label="Email"
+              value={data?.user?.email}
+            />
+            <InfoItem
+              icon={<CalendarIcon className="h-5 w-5 text-orange-400" />}
+              label="Reservation Date"
+              value={new Date(data?.reservation_Date).toLocaleDateString()}
+            />
           </div>
-          <span className="text-2xl font-bold text-customColor">
-            ${data?.table?.price}
-          </span>
-        </div>
 
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-10">
-          <button
-            onClick={() => navigate("/cart-checkout")}
-            className="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-lg font-semibold transition"
-          >
-            Proceed to Payment
-          </button>
-          <button
-            onClick={() => setShowModal(true)}
-            className="bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-lg font-semibold transition"
-          >
-            Cancel Reservation
-          </button>
-        </div>
+          {/* Total */}
+          <div className="flex justify-between items-center mt-8 border-t pt-4">
+            <div className="flex items-center gap-2">
+              <CurrencyDollarIcon className="h-6 w-6 text-green-600" />
+              <span className="text-lg font-semibold text-gray-700">
+                Total:
+              </span>
+            </div>
+            <span className="text-2xl font-bold text-customColor">
+              ${data?.table?.price}
+            </span>
+          </div>
 
-        {/* Confirmation Modal */}
-        {showModal && (
-          <CustomModal
-            cancelReservation={cancelReservation}
-            setShowModal={setShowModal}
-          />
-        )}
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row justify-between gap-4 mt-10">
+            <button
+              onClick={() => navigate("/cart-checkout")}
+              className="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-lg font-semibold transition"
+            >
+              Proceed to Payment
+            </button>
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-lg font-semibold transition"
+            >
+              Cancel Reservation
+            </button>
+          </div>
 
-        {/* Footer Message */}
-        <div className="mt-8 text-center text-gray-500 text-sm">
-          <p>{data.msg}</p>
+          {/* Confirmation Modal */}
+          {showModal && (
+            <CustomModal
+              cancelReservation={cancelReservation}
+              setShowModal={setShowModal}
+            />
+          )}
+
+          {/* Footer Message */}
+          <div className="mt-8 text-center text-gray-500 text-sm">
+            <p>{data.msg}</p>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
 
 // Reusable field component
 const InfoItem = ({ icon, label, value }) => (
-    <div className="flex items-center gap-3 p-3 bg-gray-100 rounded-md shadow-sm">
-      {icon}
-      <div className="flex flex-col">
-        <span className="text-xs text-gray-500">{label}</span>
-        <span className="font-semibold text-sm">{value}</span>
-      </div>
+  <div className="flex items-center gap-3 p-3 bg-gray-100 rounded-md shadow-sm">
+    {icon}
+    <div className="flex flex-col">
+      <span className="text-xs text-gray-500">{label}</span>
+      <span className="font-semibold text-sm">{value}</span>
     </div>
-  );
+  </div>
+);
 
 export default OrderDetails;
