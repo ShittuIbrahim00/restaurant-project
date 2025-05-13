@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+
 
 const CustomModal = ({ cancelReservation, setShowModal }) => {
   const [loading, setLoading] = useState(false);

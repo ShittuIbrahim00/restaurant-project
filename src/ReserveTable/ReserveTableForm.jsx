@@ -55,7 +55,7 @@ const ReserveTableForm = ({ id }) => {
 
         try {
             const resp = await axios.post(
-                `http://localhost:5000/api/v1/create-reserve-table/${id}`,
+                `https://restaurant-backend-wwjm.onrender.com/api/v1/create-reserve-table/${id}`,
                 formData,
                 { headers: 
                     { 'Authorization': `Bearer ${token}` },
