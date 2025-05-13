@@ -27,27 +27,28 @@ const OrderDetails = () => {
     setId(id);
     const fetchData = async () => {
       const resp = await axios.get(
-        `http://localhost:5000/api/v1/get-single-resevertable/${id}`
+        `https://restaurant-backend-wwjm.onrender.com/api/v1/get-single-resevertable/${id}`
       );
       if (resp.data.success) setData(resp.data.data);
     };
     fetchData();
   }, []);
 
-  const cancelReservation = async () => {
-    try {
-      const resp = await axios.delete(
-        `http://localhost:5000/api/v1/cancel-reservation/${id}`
-      );
-      if (resp.data.success) {
-        toast.success(resp.data.msg);
-        setShowModal(false);
-        navigate("/");
-      } else toast.error(resp.data.msg);
-    } catch (error) {
-      toast.error("An error occurred");
-    }
-  };
+    const cancelReservation = async () => {
+        try {
+            const resp = await axios.delete(`https://restaurant-backend-wwjm.onrender.com/api/v1/cancel-reservation/${id}`);
+            if (resp.data.success) {
+                toast.success(resp.data.msg);
+                setShowModal(false);
+                navigate('/')
+            } else toast.error(resp.data.msg);
+        } catch (error) {
+            toast.error('An error occurred');
+        }
+    };
+
+
+
 
   return (
     <div className="">
