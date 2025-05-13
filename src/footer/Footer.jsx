@@ -5,6 +5,7 @@ import { TfiWorld } from 'react-icons/tfi';
 import { FaFacebookF } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 import ContactForm from '../ReserveTable/ContactForm'
+import ContactForm from '../ReserveTable/ContactForm'
 const Footer = () => {
   return (
     <div>
