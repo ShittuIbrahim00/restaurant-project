@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   // Paths without Navbar and Footer
-  const hideNavAndFooter = ["/login", "/signup", "/tables", "/orderDetail"].includes(location.pathname);
+  const hideNavAndFooter = ["/login", "/signup"].includes(location.pathname);
 
   return (
     <div className="font-merienda min-h-screen overflow-hidden">
