@@ -61,7 +61,7 @@ const Hero = () => {
               <div className="mt-3 md:mt-3 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 {/* "Book a Table" Button */}
                 <button
-                  onClick={() => navigate("/reservation")}
+                  onClick={() => navigate("/tables")}
                   className="relative overflow-hidden text-white bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group"
                 >
                   <span className="relative z-10 transition-colors duration-300 group-hover:text-black">

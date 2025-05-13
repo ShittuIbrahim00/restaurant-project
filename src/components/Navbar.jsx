@@ -136,11 +136,8 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Book a Table */}
-        <button
-          onClick={() => navigate("/reservation")}
-          className="hidden lg:flex relative overflow-hidden font-merienda text-white bg-customColor px-8 py-2 xl:px-8 xl:py-2 lg:py-1 lg:px-4 rounded-full font-bold lg:font-normal xl:font-bold text-sm gap-2 cursor-pointer capitalize items-center group transition-all duration-300 ease-in-out"
-        >
+        {/* "Book a Table" Button - Only on Large Screens */}
+        <button onClick={()=>navigate("/tables")} className="hidden lg:flex relative overflow-hidden font-merienda text-white bg-customColor px-8 py-2 xl:px-8 xl:py-2 lg:py-1 lg:px-4 rounded-full font-bold lg:font-normal xl:font-bold text-sm gap-2 cursor-pointer capitalize items-center group transition-all duration-300 ease-in-out">
           <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
             Book a table
           </span>

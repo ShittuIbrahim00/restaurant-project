@@ -6,7 +6,7 @@ import Cart from "./pages/Cart";
 import Error404 from "./pages/Error404";
 import { useEffect, useState } from "react";
 import Loader from "./components/SpicyLoader";
-
+import { Toaster } from "react-hot-toast";
 import OurChef from "./pages/OurChef";
 import ChefDetail from "./pages/ChefDetail";
 import Footer from "./footer/Footer";
@@ -16,16 +16,21 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./pages/CheckoutForm";
 import { Analytics } from "@vercel/analytics/react";
 
+// Auth Pages
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
+
+// Other Pages
 import Testimonial from "./pages/Testimonial";
 import Menu from "./pages/Menu";
-
 import About from "./pages/About";
 import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
+import AllTable from "./ReserveTable/AllTable";
+import OrderDetails from "./ReserveTable/orderDetail";
 
+// Protected Routes
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
@@ -33,15 +38,18 @@ const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 function App() {
   const [loading, setIsLoading] = useState(true);
   const location = useLocation();
-  const hideNavAndFooter = ["/login", "/signup"].includes(location.pathname);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
+  // Paths without Navbar and Footer
+  const hideNavAndFooter = ["/login", "/signup", "/tables", "/orderDetail"].includes(location.pathname);
+
   return (
     <div className="font-merienda min-h-screen overflow-hidden">
+      <Toaster/>
       {!loading && !hideNavAndFooter && <Navbar />}
       <CustomCursor />
       {loading ? (
@@ -54,26 +62,22 @@ function App() {
           <Route path="/signup" element={<Signup />} />
 
           {/* Protected Routes */}
-          <Route path="/cart" element={<Cart />} />
-          <Route
-            path="/cart-checkout"
+          <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+          <Route 
+            path="/cart-checkout" 
             element={
               <ProtectedRoute>
                 <Elements stripe={stripePromise}>
                   <CheckoutForm />
                 </Elements>
               </ProtectedRoute>
-            }
+            } 
           />
           <Route path="/chefs" element={<OurChef />} />
           <Route path="/chefs/:id" element={<ChefDetail />} />
-          <Route
-            path="/reservation"
-            element={
-              <ProtectedRoute>
-                <BookTable />
-              </ProtectedRoute>
-            }
+          <Route 
+            path="/reservation/:id" 
+            element={<ProtectedRoute><BookTable /></ProtectedRoute>} 
           />
           <Route path="/service" element={<Service />} />
           <Route path="/about" element={<About />} />
@@ -81,6 +85,10 @@ function App() {
           <Route path="/menu/:id" element={<MenuItemDetail />} />
           <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/menu" element={<Menu />} />
+
+          {/* Special Routes without Navbar/Footer */}
+          <Route path="/tables" element={<AllTable />} />
+          <Route path="/orderDetail" element={<OrderDetails />} />
 
           {/* Catch-all */}
           <Route path="*" element={<Error404 />} />
