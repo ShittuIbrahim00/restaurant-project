@@ -32,6 +32,7 @@ import OrderDetails from "./ReserveTable/orderDetail";
 
 // Protected Routes
 import ProtectedRoute from "./routes/ProtectedRoute";
+import TableResevationPayment from "./pages/TableReservationPayment";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
@@ -74,6 +75,7 @@ function App() {
             } 
           />
           <Route path="/chefs" element={<OurChef />} />
+          <Route path="/reservepayment" element={<TableResevationPayment />} />
           <Route path="/chefs/:id" element={<ChefDetail />} />
           <Route 
             path="/reservation/:id" 

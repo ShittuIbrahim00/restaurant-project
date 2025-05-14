@@ -17,7 +17,7 @@ const CustomModal = ({ cancelReservation, setShowModal }) => {
         <h2 className="text-xl font-semibold mb-4">Are you sure you want to cancel?</h2>
         <div className="flex justify-end space-x-4 mt-4">
           <button className="px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300" onClick={() => setShowModal(false)}>No</button>
-          <button className="px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700" onClick={handleConfirm} disabled={loading}>
+          <button className="px-4 py-2 rounded-md bg-customColor text-white" onClick={handleConfirm} disabled={loading}>
             {loading ? 'Please Wait...' : 'Yes'}
           </button>
         </div>

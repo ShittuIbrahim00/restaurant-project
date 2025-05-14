@@ -4,6 +4,8 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const ReserveTableForm = ({ id }) => {
+  const localHost = "http://localhost:5000";
+    const renderUrl = "https://restaurant-backend-wwjm.onrender.com"
   const navigate = useNavigate();
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
@@ -58,7 +60,7 @@ const ReserveTableForm = ({ id }) => {
 
     try {
       const resp = await axios.post(
-        `https://restaurant-backend-wwjm.onrender.com/api/v1/create-reserve-table/${id}`,
+        `${localHost}/api/v1/create-reserve-table/${id}`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

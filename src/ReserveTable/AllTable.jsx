@@ -10,6 +10,8 @@ import {
 import heroBG from "../assets/hero-bg.jpg";
 
 const AllTable = () => {
+  const localHost = "http://localhost:5000";
+  const renderUrl = "https://restaurant-backend-wwjm.onrender.com";
   const [category, setCategory] = useState([]);
   const [table, setTable] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,9 +24,7 @@ const AllTable = () => {
 
   useEffect(() => {
     const fetchCategory = async () => {
-      const resp = await axios.get(
-        "https://restaurant-backend-wwjm.onrender.com/api/v1/get-all-category"
-      );
+      const resp = await axios.get(`${localHost}/api/v1/get-all-category`);
       if (resp.data.sucess === true) {
         setCategory(resp.data.data);
       } else {
@@ -37,9 +37,8 @@ const AllTable = () => {
   useEffect(() => {
     const fetchAllTable = async () => {
       setLoading(true);
-      const resp = await axios.get(
-        "https://restaurant-backend-wwjm.onrender.com/api/v1/get-all-table"
-      );
+      const resp = await axios.get(`${localHost}/api/v1/get-all-table`);
+      console.log(resp.data.data);
       if (resp.data.success === true) {
         setTable(resp.data.data);
       } else {
@@ -49,6 +48,23 @@ const AllTable = () => {
     };
     fetchAllTable();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchAllTable = async () => {
+  //     // setLoading(true);
+  //     const resp = await axios.get(
+  //       `${localHost}/api/v1/reservedtablewithinfomation`
+  //     );
+  //     console.log(resp.data.data);
+  //     // if (resp.data.success === true) {
+  //     //   setTable(resp.data.data);
+  //     // } else {
+  //     //   setTable([]);
+  //     // }
+  //     setLoading(false);
+  //   };
+  //   fetchAllTable();
+  // }, []);
 
   return (
     <div className="">
@@ -97,68 +113,27 @@ const AllTable = () => {
 
             {/* Table Cards */}
             <div className="grid gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filteredTables.map((e) => (
-                <Link
-                  to={`/reservation/${e._id}`}
-                  key={e._id}
-                  className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 group border border-gray-100 hover:border-gray-300"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-customColor group-hover:text-black transition-colors">
-                      Table {e.tableNumber}
-                    </h2>
+              {filteredTables.map((e) => {
+                const isReserved = e.isReserved;
 
-                    <span
-                      className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                        e.isBooked
-                          ? "bg-red-100 text-red-700"
-                          : "bg-green-100 text-green-700"
-                      }`}
-                    >
-                      {e.isBooked ? (
-                        <span className="inline-flex items-center gap-1">
-                          <XCircleIcon className="h-4 w-4" />
-                          Booked
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1">
-                          <CheckCircleIcon className="h-4 w-4" />
-                          Available
-                        </span>
-                      )}
-                    </span>
-
-                    <span className="bg-customColor text-white text-xs font-semibold px-2 py-1 rounded-full">
-                      {e?.categoryId?.name}
-                    </span>
+                return (
+                  <div
+                    key={e._id}
+                    className={`${
+                      isReserved ? "pointer-events-none opacity-50" : ""
+                    } bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 group border border-gray-100 hover:border-gray-300`}
+                  >
+                    {!isReserved ? (
+                      <Link to={`/reservation/${e._id}`} className="block">
+                        {/* Entire clickable content */}
+                        <TableCardContent e={e} />
+                      </Link>
+                    ) : (
+                      <TableCardContent e={e} />
+                    )}
                   </div>
-
-                  <div className="text-sm space-y-3 text-gray-700">
-                    <div className="flex items-center gap-2">
-                      <CurrencyDollarIcon className="h-4 w-4 text-gray-500" />
-                      <span className="font-medium">Price:</span> ${e.price}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <UsersIcon className="h-4 w-4 text-gray-500" />
-                      <span className="font-medium">Capacity:</span>{" "}
-                      {e.capacity} persons
-                    </div>
-                  </div>
-
-                  <div className="mt-4">
-                    <button
-                      disabled={e.isBooked}
-                      className={`w-full text-sm font-semibold py-2 rounded-md transition ${
-                        e.isBooked
-                          ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                          : "bg-customColor text-white hover:bg-black"
-                      }`}
-                    >
-                      {e.isBooked ? "Unavailable" : "Reserve Now"}
-                    </button>
-                  </div>
-                </Link>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -166,5 +141,63 @@ const AllTable = () => {
     </div>
   );
 };
+
+const TableCardContent = ({ e }) => (
+  <>
+    <div className="flex items-center justify-between mb-4">
+      <h2 className="text-xl font-bold text-customColor group-hover:text-black transition-colors">
+        Table {e.tableNumber}
+      </h2>
+
+      <span
+        className={`text-xs font-semibold px-2 py-1 rounded-full ${
+          e.isReserved
+            ? "bg-red-100 text-red-700"
+            : "bg-green-100 text-green-700"
+        }`}
+      >
+        {e.isReserved ? (
+          <span className="inline-flex items-center gap-1">
+            <XCircleIcon className="h-4 w-4" />
+            Booked
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1">
+            <CheckCircleIcon className="h-4 w-4" />
+            Available
+          </span>
+        )}
+      </span>
+
+      <span className="bg-customColor text-white text-xs font-semibold px-2 py-1 rounded-full">
+        {e?.categoryId?.name}
+      </span>
+    </div>
+
+    <div className="text-sm space-y-3 text-gray-700">
+      <div className="flex items-center gap-2">
+        <CurrencyDollarIcon className="h-4 w-4 text-gray-500" />
+        <span className="font-medium">Price:</span> ${e.price}
+      </div>
+      <div className="flex items-center gap-2">
+        <UsersIcon className="h-4 w-4 text-gray-500" />
+        <span className="font-medium">Capacity:</span> {e.capacity} persons
+      </div>
+    </div>
+
+    <div className="mt-4">
+      <button
+        disabled={e.isReserved}
+        className={`w-full text-sm font-semibold py-2 rounded-md transition ${
+          e.isReserved
+            ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+            : "bg-customColor text-white hover:bg-black"
+        }`}
+      >
+        {e.isReserved ? "Unavailable" : "Reserve Now"}
+      </button>
+    </div>
+  </>
+);
 
 export default AllTable;
