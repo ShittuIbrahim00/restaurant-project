@@ -2,10 +2,12 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const restaurantURL = "https://restaurant-backend-wwjm.onrender.com/api/v1";
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,10 +26,12 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     try {
       const response = await axios.post(`${restaurantURL}/register`, formData);
       if (response.status === 201) {
         console.log(response);
+        setIsLoading(false)
         navigate("/login");
         setFormData({
           name: "",
@@ -35,9 +39,14 @@ const SignUp = () => {
           password: "",
           role: "",
         });
-      };
+      } else {
+        setIsLoading(false)
+        toast.error("Fill all fields");
+      }
     } catch (error) {
+      setIsLoading(false)
       console.error(error);
+      toast.error("Unable to register you, try again");
     }
   };
 
@@ -107,9 +116,10 @@ const SignUp = () => {
             <button
               onClick={handleSubmit}
               type="submit"
+              disabled={isLoading}
               className="bg-customColor transition-all duration-300 ease-in-out hover:bg-black text-white font-bold w-full p-4 rounded-full"
             >
-              Submit
+              {isLoading ? "Registering..." : "Submit"}
             </button>
           </div>
 

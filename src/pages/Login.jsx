@@ -2,9 +2,12 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+  const {user, setUser} = useContext(AuthContext);
+  console.log(user)
+  const [isLoading, setIsLoading] = useState(false);
   const restaurantURL = "https://restaurant-backend-wwjm.onrender.com/api/v1";
   const navigate = useNavigate();
 
@@ -18,10 +21,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true)
       const response = await axios.post(`${restaurantURL}/login`, formData);
       const result = response.data;
       console.log(result);
       if (response.status === 200) {
+        setIsLoading(false)
+        setUser(response.data)
         setFormData({
           email: "",
           password: ""
@@ -30,9 +36,11 @@ const Login = () => {
         toast.success("User logged in successfully")
         navigate("/");
       } else {
+        setIsLoading(false)
         toast.error("Error logging in");
       };
     } catch (error) {
+      setIsLoading(false)
       console.error(error);
       toast.error("Error fetching data");
     }
@@ -86,9 +94,10 @@ const Login = () => {
           <div className="w-full mt-4 lg:mt-12">
             <button
               type="submit"
+              disabled={isLoading}
               className="bg-customColor transition-all duration-300 ease-in-out hover:bg-black text-white font-bold w-full p-4 rounded-full"
             >
-              Submit
+              {isLoading ? "Logging In...." : "Submit"}
             </button>
           </div>
 
