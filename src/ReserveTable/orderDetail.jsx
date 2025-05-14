@@ -33,7 +33,7 @@ const OrderDetails = () => {
     const fetchData = async () => {
       try {
         const resp = await axios.get(
-          `${localHost}/api/v1/get-single-resevertable/${id}`
+          `${renderUrl}/api/v1/get-single-resevertable/${id}`
         );
         if (resp.data.success) setData(resp.data.data);
       } catch (err) {
@@ -46,7 +46,7 @@ const OrderDetails = () => {
   const cancelReservation = async () => {
     try {
       const resp = await axios.delete(
-        `${localHost}/api/v1/cancel-reservation/${id}`
+        `${renderUrl}/api/v1/cancel-reservation/${id}`
       );
       if (resp.data.success) {
         toast.success(resp.data.msg);
@@ -63,7 +63,7 @@ const OrderDetails = () => {
       setLoader(true);
 
       const resp = await axios.post(
-        `${localHost}/api/v1/pay`,
+        `${renderUrl}/api/v1/pay`,
         {
           reservationId: id,
           userId: data?.user?._id,

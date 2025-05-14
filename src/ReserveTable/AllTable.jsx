@@ -24,7 +24,7 @@ const AllTable = () => {
 
   useEffect(() => {
     const fetchCategory = async () => {
-      const resp = await axios.get(`${localHost}/api/v1/get-all-category`);
+      const resp = await axios.get(`${renderUrl}/api/v1/get-all-category`);
       if (resp.data.sucess === true) {
         setCategory(resp.data.data);
       } else {
@@ -37,7 +37,7 @@ const AllTable = () => {
   useEffect(() => {
     const fetchAllTable = async () => {
       setLoading(true);
-      const resp = await axios.get(`${localHost}/api/v1/get-all-table`);
+      const resp = await axios.get(`${renderUrl}/api/v1/get-all-table`);
       console.log(resp.data.data);
       if (resp.data.success === true) {
         setTable(resp.data.data);

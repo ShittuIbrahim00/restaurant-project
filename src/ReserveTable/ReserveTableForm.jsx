@@ -60,7 +60,7 @@ const ReserveTableForm = ({ id }) => {
 
     try {
       const resp = await axios.post(
-        `${localHost}/api/v1/create-reserve-table/${id}`,
+        `${renderUrl}/api/v1/create-reserve-table/${id}`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
