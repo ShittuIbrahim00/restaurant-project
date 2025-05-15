@@ -21,6 +21,7 @@ import About from "./pages/About";
 import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
+import Inventry from "./pages/Inventry";
 
 function App() {
   const [loading, setIsLoading] = useState(true);
@@ -54,6 +55,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/menudetail" element={<MenuItemDetail />} />
+          <Route path="/inventry" element={<Inventry />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       )}
