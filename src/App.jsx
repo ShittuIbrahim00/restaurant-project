@@ -33,6 +33,8 @@ import OrderDetails from "./ReserveTable/orderDetail";
 // Protected Routes
 import ProtectedRoute from "./routes/ProtectedRoute";
 import TableResevationPayment from "./pages/TableReservationPayment";
+import ReservationDetails from "./ReserveTable/ReservationDetails";
+import PaymentStatus from "./ReserveTable/PaymentSuccess";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
@@ -82,6 +84,8 @@ function App() {
             element={<ProtectedRoute><BookTable /></ProtectedRoute>} 
           />
           <Route path="/service" element={<Service />} />
+          <Route path="/payment-status" element={<PaymentStatus />} />
+          <Route path="/reservation-details" element={<ReservationDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/menu/:id" element={<MenuItemDetail />} />

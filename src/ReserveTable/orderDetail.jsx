@@ -13,13 +13,10 @@ import {
   TableCellsIcon,
   CurrencyDollarIcon,
 } from "@heroicons/react/24/outline";
-import { loadStripe } from "@stripe/stripe-js";
-
-const stripePromise = loadStripe("pk_test_51ROc5FGg893YVERIXPEk6VXtIxg1SqnptA497lmmdOXSKArxLdRWVdZ7wacFn1OXsRi4XSuSWuKg5OS9JJgCIR9m00GmI6eVfq"); // Replace with your Stripe publishable key
 
 const OrderDetails = () => {
-    const localHost = "http://localhost:5000";
-    const renderUrl = "https://restaurant-backend-wwjm.onrender.com"
+  const localHost = "http://localhost:5000";
+  const renderUrl = "https://restaurant-backend-wwjm.onrender.com";
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState("");
@@ -30,11 +27,10 @@ const OrderDetails = () => {
     const reserveId = JSON.parse(localStorage.getItem("reserveTable"));
     const id = reserveId?._id;
     setId(id);
+
     const fetchData = async () => {
       try {
-        const resp = await axios.get(
-          `${renderUrl}/api/v1/get-single-resevertable/${id}`
-        );
+        const resp = await axios.get(`${renderUrl}/api/v1/get-single-resevertable/${id}`);
         if (resp.data.success) setData(resp.data.data);
       } catch (err) {
         toast.error("Failed to fetch reservation details");
@@ -45,50 +41,56 @@ const OrderDetails = () => {
 
   const cancelReservation = async () => {
     try {
-      const resp = await axios.delete(
-        `${renderUrl}/api/v1/cancel-reservation/${id}`
-      );
+      const resp = await axios.delete(`${renderUrl}/api/v1/cancel-reservation/${id}`);
       if (resp.data.success) {
         toast.success(resp.data.msg);
         setShowModal(false);
+        localStorage.removeItem("reserveTable");
         navigate("/");
-      } else toast.error(resp.data.msg);
+      } else {
+        toast.error(resp.data.msg);
+      }
     } catch (error) {
       toast.error("An error occurred");
     }
   };
 
   const handlePayment = async () => {
+    if (!data || !data.table) {
+      toast.error("Invalid reservation data");
+      return;
+    }
+  
+    setLoader(true);
+  
     try {
-      setLoader(true);
-
-      const resp = await axios.post(
-        `${renderUrl}/api/v1/pay`,
-        {
-          reservationId: id,
-          userId: data?.user?._id,
-        }
-      );
-
-      const { clientSecret } = resp.data;
-
-      if (!clientSecret) {
+      const res = await axios.post(`${renderUrl}/api/v1/flutterwave/pay`, {
+        email: data?.user?.email,
+        amount: data?.table?.price,
+        userId: data?.user?._id,
+        tableId: data?.table?._id,
+        qty_persons: data?.qty_persons,
+        reservation_Date: data?.reservation_Date,
+        reservation_Time: data?.reservation_Time,
+      });
+  
+      if (res.data?.link) {
+        window.location.href = res.data.link;
+      } else {
         toast.error("Failed to initiate payment");
-        return;
       }
-
-      localStorage.setItem("clientSecret", clientSecret);
-      navigate("/reservepayment"); // Navigate to a separate Stripe Elements page
     } catch (err) {
-      console.error(err);
-      toast.error("Payment initialization failed");
+      console.error(err.response?.data || err.message);
+      toast.error("An error occurred while initiating payment");
     } finally {
       setLoader(false);
     }
   };
+  
 
   return (
     <div className="">
+      {/* Hero */}
       <div className="relative font-merienda min-h-64 w-full">
         <img
           src={heroBG}
@@ -104,6 +106,7 @@ const OrderDetails = () => {
         </div>
       </div>
 
+      {/* Reservation Details */}
       <div className="bg-customGray text-white min-h-screen py-8 font-merienda">
         <div className="max-w-4xl mx-auto bg-white text-gray-800 rounded-lg shadow-lg p-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -135,7 +138,16 @@ const OrderDetails = () => {
             <InfoItem
               icon={<CalendarIcon className="h-5 w-5 text-customColor" />}
               label="Reservation Date"
-              value={new Date(data?.reservation_Date).toLocaleDateString()}
+              value={
+                data?.reservation_Date
+                  ? new Date(data?.reservation_Date).toLocaleDateString()
+                  : ""
+              }
+            />
+            <InfoItem
+              icon={<ClockIcon className="h-5 w-5 text-customColor" />}
+              label="Status"
+              value={data?.status || "Pending"}
             />
           </div>
 
@@ -145,7 +157,7 @@ const OrderDetails = () => {
               <span className="text-lg font-semibold text-gray-700">Total:</span>
             </div>
             <span className="text-2xl font-bold text-customColor">
-              ${data?.table?.price || 0}
+              ₦{data?.table?.price || 0}
             </span>
           </div>
 
