@@ -1,44 +1,35 @@
 import React from 'react'
-import ReserveTableForm from './ReserveTableForm'
 
-const ReserveTable = () => {
-  return (
-    <div>
-      <div className='bg-customGray grid lg:grid-cols-2 p-3 lg:p-9 grid-cols-1 gap-8 '>
-        <div className='flex flex-col gap-6 pt-16 items-start justify-start'>
-          <div>
-            <div className='flex items-center gap-3'>
-              <div className='h-[5px] w-[5px] bg-customColor rounded-full'></div>
-              <p className='text-sm leading-9 font-bold uppercase text-customColor'>reserve a table</p>
-            </div>
-            <div className='text-white uppercase font-extrabold font-jakarta md:text-[30px] sm:text-[25px] text-[25px] lg:text-[40px] leading-snug'>
-              reserve now your table <br /> <div className='text-customColor'> <span className='text-white'>and</span> enjoy dining <br /> experience.</div>
-            </div>
-          </div>
-          <div className='mt-4'>
-            <h1 className='text-lg leading-8 font-bold font-jakarta text-white'>Open Hours</h1>
-            <div>
-              <div className='flex text-gray-400 mt-3 items-center gap-2'>
-                <p>Mon - Thu</p>
-                <p>10:00 AM - 09:00 PM</p>
-              </div>
-              <div className='flex text-gray-400 mt-2 items-center gap-2'>
-                <p>Fri - Sat</p>
-                <p>09:00 AM - 10:00 PM</p>
-              </div>
-              <div className='flex text-gray-400 mt-2 items-center gap-2'>
-                <p>Sun</p>
-                <p>Closed</p>
-              </div>
-            </div>
-          </div>
+const ReserveTableForm = () => {
+    return (
+        <div className='lg:w-[100%] w-[100%] bg-customBlack opacity-80 rounded-2xl mt-4'>
+            <form action="" className='w-full lg:pt-12 lg:pb-7 p-5 lg:px-9 text-white'>
+                <div className='flex flex-col gap-3 items-start'>
+                    <label htmlFor="name" className='font-normal text-md'>Your Name</label>
+                    <input type="text" name="" id="name" placeholder='e.g John' className='w-full border border-gray-300 bg-customBlack outline-none p-4 rounded-xl' />
+                </div>
+                <div className='lg:flex w-full items-center gap-6 mt-4'>
+                    <div className='flex flex-col gap-3 items-start w-full'>
+                        <label htmlFor="email" className='font-normal text-md'>Email Address</label>
+                        <input type="email" name="" id="email" placeholder='e.g John@example.com' className='w-full bg-customBlack outline-none border border-gray-300 p-4 rounded-xl' />
+                    </div>
+                    <div className='flex flex-col gap-3 items-start w-full mt-4'>
+                        <label htmlFor="phone" className='font-normal text-md'>Phone Number</label>
+                        <input type="number" name="" id="phone" placeholder='09135611021' className='w-full border bg-customBlack outline-none border-gray-300 p-4 rounded-xl' />
+                    </div>
+                </div>
+                <div className='flex flex-col gap-3 items-start w-full mt-4'>
+                        <label htmlFor="message" className='font-normal text-md'>Message</label>
+                        <textarea name="message" id="message" placeholder='Message' className='w-full border bg-customBlack outline-none border-gray-300 p-4 rounded-xl'></textarea>
+                        
+                    </div>
+
+                <div className='w-full mt-4 lg:mt-12'>
+                    <button className='bg-customColor transition-all duration-300 ease-in-out hover:bg-white text-white hover:text-black font-bold w-full p-4 rounded-full'>Submit Inquiry</button>
+                </div>
+            </form>
         </div>
-        <div className='lg:pt-16'>
-          <ReserveTableForm />
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
-export default ReserveTable
+export default ReserveTableForm

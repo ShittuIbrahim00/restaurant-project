@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import dishImgOne from "../assets/our-dish-image-1.jpg";
 import dishImgTwo from "../assets/our-dish-image-2.jpg";
+import { useNavigate } from "react-router-dom";
 const categories = ["Appetizer", "Main Course", "Desserts", "Drinks"];
 
 const products = {
@@ -24,6 +25,10 @@ const products = {
 
 const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+    const navigate = useNavigate()
+    const linkToMenu = () => {
+      navigate("/menu")
+    };
   return (
     <div className="bg-customGray px-4 min-h-screen font-merienda pt-10 pb-16">
       <div className="grid gap-4">
@@ -94,7 +99,7 @@ const Menu = () => {
       </div>
       <p className="text-white text-center text-lg">
         Ready to Savor the Best?{" "}
-        <span className="underline text-customColor hover:text-white">
+        <span onClick={linkToMenu} className="underline text-customColor hover:text-white">
           Check Our Dishes!
         </span>
       </p>

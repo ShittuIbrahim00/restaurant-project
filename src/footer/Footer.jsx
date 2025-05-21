@@ -4,17 +4,15 @@ import { PiPhoneThin } from "react-icons/pi";
 import { TfiWorld } from 'react-icons/tfi';
 import { FaFacebookF } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
-import ReserveTable from '../ReserveTable/ReserveTable';
+import ContactForm from '../ReserveTable/ContactForm';
+
 const Footer = () => {
-  return (
-    <div>
-      <ReserveTable/>
+  return ( 
       <div className='bg-customBlack pb-12'>
         <div className='lg:pt-28  p-4'>
           <div className='flex flex-col items-start gap-6'>
             <div>
               <img src="https://html.awaikenthemes.com/spicyhunt/images/logo.svg" alt="" className='' />
-
             </div>
             <div>
               <div className='flex items-center gap-4'>
@@ -45,7 +43,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
   )
 }
 

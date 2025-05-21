@@ -10,6 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 const DailyOffers = () => {
   const navigate = useNavigate();
+  const linkToMenu = () => {
+    navigate("/menu")
+  };
   return (
     <div className="bg-customBlack p-4 min-h-screen font-merienda">
       {/* Content */}
@@ -123,7 +126,7 @@ const DailyOffers = () => {
                 <span className="absolute inset-0 bg-white w-0 left-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </button>
               {/* "Book a Table" Button */}
-              <button className="relative overflow-hidden bg-white text-black px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
+              <button onClick={linkToMenu} className="relative overflow-hidden bg-white text-black px-8 lg:px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group">
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                   Explore Menu
                 </span>

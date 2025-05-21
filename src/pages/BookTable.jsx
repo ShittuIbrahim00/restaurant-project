@@ -1,10 +1,11 @@
 import React from 'react'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa6'
 import { TfiWorld } from 'react-icons/tfi'
-import { Link } from 'react-router-dom'
-import ContactForm from '../ReserveTable/ContactForm'
-import ReserveTable from '../ReserveTable/ReserveTable'
+import { Link, useParams } from 'react-router-dom'
+import ReserveTableForm from '../ReserveTable/ReserveTableForm'
+
 const BookTable = () => {
+  const {id} = useParams()
   return (
     <div className="bg-black opacity-95  pb-14">
       <div className="relative">
@@ -15,7 +16,7 @@ const BookTable = () => {
         <div className="flex justify-center absolute top-[270px] items-center w-full">
           <div>
             <h1 className="leading-loose md:text-4xl sm:text-3xl text-3xl lg:text-6xl font-merienda font-bold text-white">
-              OUR CHEFS
+             Reserve Your Table
             </h1>
             <div className="flex text-gray-400 mt-3 text-lg justify-center gap-2">
               <Link to="/">Home</Link>
@@ -58,9 +59,7 @@ const BookTable = () => {
               </div>
             </div>
           </div>
-          <div className='lg:w-[50%] w-full pt-5 px-4'>
-            <ContactForm />
-          </div>
+          <ReserveTableForm id={id}/>
 
         </div>
       </div>
