@@ -3,6 +3,8 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+// import AuthContext from "../context/AuthContext"; 
+
 
 const Login = () => {
   const {user, setUser} = useContext(AuthContext);

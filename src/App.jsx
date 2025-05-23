@@ -27,9 +27,7 @@ import About from "./pages/About";
 import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
-<<<<<<< HEAD
 import Inventry from "./pages/Inventry";
-=======
 import AllTable from "./ReserveTable/AllTable";
 import OrderDetails from "./ReserveTable/orderDetail";
 
@@ -40,7 +38,6 @@ import ReservationDetails from "./ReserveTable/ReservationDetails";
 import PaymentStatus from "./ReserveTable/PaymentSuccess";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
->>>>>>> 1683f6612b8ad7343e11c47054d6a73794b1071e
 
 function App() {
   const [loading, setIsLoading] = useState(true);
@@ -92,10 +89,8 @@ function App() {
           <Route path="/reservation-details" element={<ReservationDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactUs />} />
-<<<<<<< HEAD
-          <Route path="/menudetail" element={<MenuItemDetail />} />
+          {/* <Route path="/menudetail" element={<MenuItemDetail />} /> */}
           <Route path="/inventry" element={<Inventry />} />
-=======
           <Route path="/menu/:id" element={<MenuItemDetail />} />
           <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/menu" element={<Menu />} />
@@ -105,7 +100,6 @@ function App() {
           <Route path="/orderDetail" element={<OrderDetails />} />
 
           {/* Catch-all */}
->>>>>>> 1683f6612b8ad7343e11c47054d6a73794b1071e
           <Route path="*" element={<Error404 />} />
         </Routes>
       )}
