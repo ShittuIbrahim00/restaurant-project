@@ -13,7 +13,7 @@ import {
 export default function ReservationDetails() {
   const location = useLocation();
   const navigate = useNavigate();
-  const reservation = "1";
+  const reservation = location.state;
 
   useEffect(() => {
     if (!reservation) {
