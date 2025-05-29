@@ -4,7 +4,7 @@ import CartBody from "../cartcomponents/CartBody";
 import EmptyCart from "../cartcomponents/EmptyCart";
 
 const Cart = () => {
-  const checkCart = "1";
+  const checkCart = "0";
   return (
     <div>
       {checkCart ? (

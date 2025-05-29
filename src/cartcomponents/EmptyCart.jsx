@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 const EmptyCart = () => {
   return (
-    <div className="bg-customBlack px-4 font-merienda text-white py-20 flex flex-col justify-center items-center">
+    <div className="bg-customRoundedBg px-4 font-merienda text-white py-20 flex flex-col justify-center items-center">
       <LiaOpencart className="text-9xl mb-3"/>
-      <h1 className="text-5xl font-bold">No Item(s) in cart.</h1>
+      <h1 className="text-5xl font-bold">No Item in cart.</h1>
       <p className="my-2 text-xl">Add items you want to shop</p>
       <Link
-        to={`/`}
+        to={`/menu`}
         className="relative overflow-hidden text-white mt-3 w-fit bg-customColor px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 ease-in-out group"
       >
         <span className="relative z-10 transition-colors duration-300 group-hover:text-black">

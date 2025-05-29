@@ -27,7 +27,6 @@ import About from "./pages/About";
 import Service from "./pages/Service";
 import ContactUs from "./pages/ContactUs";
 import MenuItemDetail from "./pages/MenuItemDetail";
-import Inventry from "./pages/Inventry";
 import AllTable from "./ReserveTable/AllTable";
 import OrderDetails from "./ReserveTable/orderDetail";
 
@@ -36,6 +35,8 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import TableResevationPayment from "./pages/TableReservationPayment";
 import ReservationDetails from "./ReserveTable/ReservationDetails";
 import PaymentStatus from "./ReserveTable/PaymentSuccess";
+import OrderPaymentStatus from "./cartcomponents/OrderPaymentStatus";
+import UserHistory from "./data/UserActivities";
 
 const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_KEY_HERE");
 
@@ -49,7 +50,7 @@ function App() {
   }, []);
 
   // Paths without Navbar and Footer
-  const hideNavAndFooter = ["/login", "/signup"].includes(location.pathname);
+  const hideNavAndFooter = ["/login", "/signup", ].includes(location.pathname);
 
   return (
     <div className="font-merienda min-h-screen overflow-hidden">
@@ -64,6 +65,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/history" element={<UserHistory />} />
 
           {/* Protected Routes */}
           <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
@@ -86,11 +88,10 @@ function App() {
           />
           <Route path="/service" element={<Service />} />
           <Route path="/payment-status" element={<PaymentStatus />} />
+          <Route path="/order-payment-status" element={<OrderPaymentStatus />} />
           <Route path="/reservation-details" element={<ReservationDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactUs />} />
-          {/* <Route path="/menudetail" element={<MenuItemDetail />} /> */}
-          <Route path="/inventry" element={<Inventry />} />
           <Route path="/menu/:id" element={<MenuItemDetail />} />
           <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/menu" element={<Menu />} />

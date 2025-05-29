@@ -26,6 +26,7 @@ export default function PaymentStatus() {
         .then((res) => {
           setStatus("Payment Successful! Reservation confirmed.");
           setSuccess(true);
+          console.log(res)
           setReservationInfo(res.data?.meta || null);
 
           // Optionally redirect after a few seconds
