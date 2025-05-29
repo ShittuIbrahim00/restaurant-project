@@ -93,7 +93,7 @@ const MenuItemDetail = () => {
   
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/orders/add-to-cart",
+        `${renderUrl}/api/v1/orders/add-to-cart`,
         orderPayload
       );
       console.log(res);
